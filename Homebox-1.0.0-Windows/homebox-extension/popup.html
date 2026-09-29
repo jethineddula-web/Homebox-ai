@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Homebox</title>
+<style>
+:root{--bg:#fff;--ink:#1c1b19;--muted:#6a675f;--line:#e3e0d7;--soft:#f3f1ea;--accent:#2e6b5a;--ai:#fff;--bad:#a3322a}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1c1a;--ink:#ecebe5;--muted:#9d998f;--line:#34332f;--soft:#262522;--accent:#62b39b;--ai:#0d1a16;--bad:#f2837a}}
+*{box-sizing:border-box}
+body{margin:0;width:340px;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body.welcome{width:auto;max-width:620px;margin:40px auto;padding:0 16px}
+.hd{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.hd img{width:28px;height:28px;border-radius:7px}
+.hd b{font-size:16px}
+.bd{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.btn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 12px;font:inherit;font-size:13.5px;cursor:pointer;width:100%}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--ai);font-weight:600}
+.muted{color:var(--muted)}.small{font-size:12.5px}
+.status{display:flex;align-items:center;gap:8px;font-weight:600}
+.dot{width:9px;height:9px;border-radius:50%;background:#999}
+.dot.on{background:#2fa37e}.dot.bad{background:#d24a3f}
+.code{font:700 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;margin:4px 0}
+.box{background:var(--soft);border-radius:10px;padding:10px 12px}
+ol{margin:6px 0;padding-left:20px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="hd"><img src="icons/icon48.png" alt=""><b>Homebox</b></div>
+<div class="bd">
+  <div id="welcome" class="hidden box">
+    <b>Welcome! Two quick steps:</b>
+    <ol class="small">
+      <li>Start the <b>Homebox app</b> on this computer (download it from the same place you got this extension).</li>
+      <li>Click <b>Connect</b> below and approve the code in the Homebox window.</li>
+    </ol>
+    <span class="small muted">Then open an AI chat site (LMArena, ChatGPT, Gemini, Claude, DeepSeek…) and click the Homebox button at the bottom right.</span>
+  </div>
+  <div class="status"><span class="dot" id="dot"></span><span id="statusText">Checking…</span></div>
+  <div id="body"></div>
+  <div id="siteBox" class="hidden box small"></div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
