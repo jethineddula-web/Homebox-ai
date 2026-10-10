@@ -1,0 +1,61 @@
+<!-- title: Build procedural setups in Houdini with AI -->
+<!-- description: Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step. -->
+<!-- type: article -->
+<!-- published: 2026-10-01 -->
+<!-- category: 3D -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Build procedural setups in Houdini with AI</h1>{{articleMeta}}</div>
+
+  <p>Houdini is built around node networks, and every node, parameter and connection can be created from Python through the <code>hou</code> module. That makes it a good match for AI: the AI writes the network, Houdini shows the result, and you steer it with plain language. This guide walks through connecting Houdini to Homebox and building a small procedural setup.</p>
+
+  <h2>Connect Houdini</h2>
+  <ol class="steps">
+    <li><b>Turn on Houdini in Homebox</b>Open <b>Apps → Houdini</b> and switch on <b>Let AI control Houdini</b>.</li>
+    <li><b>Start the bridge</b>In Houdini, open <b>Windows → Python Shell</b>, paste the setup line shown in Homebox and press Enter. The shell prints <i>Homebox: Houdini is listening on port 7011</i>.</li>
+    <li><b>Test</b>Click <b>Test connection</b> in Homebox. To skip the paste next time, turn on <b>Start automatically</b>, which adds a marked block to your <code>456.py</code> startup script.</li>
+  </ol>
+
+  <h2>A first task: scattered rocks</h2>
+  <p>Start a new chat, click the Homebox button and try:</p>
+  <pre>In Houdini, under /obj make a geo node called rocks_setup.
+Inside it: a grid 20 x 20, scatter 200 points on it, and copy a
+small sphere (radius 0.15) onto the points with random scale
+between 0.5 and 1.5. Name every node clearly, lay out the network,
+and set the display flag on the final node. Report the node paths.</pre>
+  <p>The AI builds this in a few steps. Each step's Python appears in Homebox for approval, so you can read exactly which nodes it creates. A typical step looks like:</p>
+  <pre>geo = hou.node('/obj').createNode('geo', 'rocks_setup')
+grid = geo.createNode('grid', 'ground')
+grid.parm('sizex').set(20)
+grid.parm('sizey').set(20)
+scatter = geo.createNode('scatter', 'rock_points')
+scatter.setInput(0, grid)
+geo.layoutChildren()
+print(scatter.path())</pre>
+
+  <h2>Why one step at a time works best</h2>
+  <p>Each approved step runs inside a single Houdini undo group, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in Houdini removes the whole step. Small steps mean small undos. They also let the AI read back results: after creating the scatter, it can print the point count and adjust before moving on.</p>
+
+  <h2>Giving feedback</h2>
+  <p>The AI can't see your viewport, but it can read numbers. Useful feedback is concrete:</p>
+  <ul>
+    <li>"The rocks are floating. Make sure the copies sit on the grid."</li>
+    <li>"Too uniform. Add a random rotation around Y."</li>
+    <li>"Print the bounding box of the final node so we can check its size."</li>
+  </ul>
+  <p>Ask it to expose important values as parameters on the geo node ("add a spare parameter for rock count"), and you can then tweak the setup yourself without the AI.</p>
+
+  <h2>Going further</h2>
+  <ul>
+    <li><b>Attribute wrangles:</b> the AI can write VEX into an Attribute Wrangle's snippet parameter, for example to colour points by height.</li>
+    <li><b>Simulations:</b> it can set up simple RBD or Vellum networks, but start with low resolution and ask for one stage at a time.</li>
+    <li><b>Saving:</b> ask it to save the hip file into the sandbox, for example <code>hou.hipFile.save(SANDBOX + '/rocks.hip')</code>.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Houdini is not listening"</b>: paste the setup line again, or turn on Start automatically and reopen a scene.</li>
+    <li><b>"no Qt found"</b>: the bridge needs Houdini's normal window. It doesn't run in <code>hython</code> or a terminal.</li>
+    <li><b>A node type isn't found</b>: node type names change between Houdini versions. Ask the AI to list available types with <code>hou.sopNodeTypeCategory().nodeTypes()</code> first.</li>
+  </ul>
+</div>

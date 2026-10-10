@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block out a level in Unreal Engine with AI · Homebox</title>
+<meta name="description" content="Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/unreal-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Block out a level in Unreal Engine with AI · Homebox">
+<meta property="og:description" content="Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.">
+<meta property="og:url" content="https://www.example.com/guides/unreal-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Block out a level in Unreal Engine with AI","description":"Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/unreal-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Block out a level in Unreal Engine with AI","item":"https://www.example.com/guides/unreal-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Block out a level in Unreal Engine with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Block out a level in Unreal Engine with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>A blockout is the rough first version of a level: simple shapes that show layout, scale and flow before any real art exists. It's repetitive work, which makes it a good job for AI. The Unreal Editor can be scripted in Python, and Homebox lets an AI chat send that Python, step by step, with your approval.</p>
+
+  <h2>Set up Unreal (once per project)</h2>
+  <ol class="steps">
+    <li><b>Enable Python</b>In the Unreal Editor choose <b>Edit → Plugins</b>, search for <b>Python Editor Script Plugin</b>, enable it and restart the editor.</li>
+    <li><b>Turn on Unreal in Homebox</b>Open <b>Apps → Unreal Engine</b> and switch on <b>Let AI control Unreal Engine</b>.</li>
+    <li><b>Start the bridge</b>Open <b>Window → Output Log</b>, switch the <b>Cmd</b> drop-down to <b>Python</b>, paste the setup line from Homebox and press Enter. The log prints <i>Homebox: Unreal Engine is listening on port 7015</i>.</li>
+    <li><b>Optional: start it with the project</b>In <b>Edit → Project Settings → Plugins → Python</b>, add the bridge file path shown in Homebox under <b>Startup Scripts</b>.</li>
+  </ol>
+
+  <h2>Ask for a blockout</h2>
+  <pre>In Unreal, block out a small courtyard using the engine's basic
+shapes (/Engine/BasicShapes/Cube): a 20 m x 20 m floor, walls 4 m
+high on three sides with a 3 m gap on the fourth, two 1 m pillars
+near the gap, and a point light 6 m above the centre. Use
+centimetres, label every actor clearly (Blockout_Floor,
+Blockout_Wall_N …) and put them in a folder called Blockout.
+Report each actor's location and scale.</pre>
+  <p>A typical step spawns a few actors through the editor subsystem:</p>
+  <pre>actors = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+cube = unreal.EditorAssetLibrary.load_asset('/Engine/BasicShapes/Cube')
+floor = actors.spawn_actor_from_object(cube, unreal.Vector(0, 0, 0))
+floor.set_actor_scale3d(unreal.Vector(20, 20, 0.1))
+floor.set_actor_label('Blockout_Floor')
+floor.set_folder_path('Blockout')
+print(floor.get_actor_label(), floor.get_actor_location())</pre>
+  <p>Each approved step runs inside one editor transaction, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in Unreal removes the whole step.</p>
+
+  <h2>Working with scale</h2>
+  <p>Unreal uses centimetres, and the basic cube is 100 units across. Most blockout mistakes are scale mistakes, so ask the AI to report locations and scales after each step. Then you can say "the walls overlap the floor edge by 50 cm, move them in" and it can fix it precisely.</p>
+
+  <h2>Ideas to try next</h2>
+  <ul>
+    <li>"Add a PlayerStart at the courtyard entrance, facing inwards."</li>
+    <li>"Duplicate the courtyard 3 times along X with 5 m gaps, as a street."</li>
+    <li>"Give all Blockout actors a simple grey material instance so they read clearly."</li>
+    <li>"List every actor in the Blockout folder with its bounds."</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>No "Python" in the Cmd drop-down</b>: the Python Editor Script Plugin isn't enabled yet.</li>
+    <li><b>Works in one project but not another</b>: the plugin and startup script are set per project.</li>
+    <li><b>The editor stalls on a step</b>: very large spawns can take time. Ask for fewer actors per step.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a simple staircase of 10 steps leading to a 3 m high platform on the north wall."</i></li>
+    <li><i>"Place five point lights in a row along the courtyard with a warm colour."</i></li>
+    <li><i>"Snap every Blockout actor to a 50 cm grid and report anything that moved."</i></li>
+    <li><i>"Delete all actors in the Blockout folder except the floor. (Check the approval before you approve this one.)"</i></li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="houdini-with-ai.html"><h3>Build procedural setups in Houdini with AI</h3><p>Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.</p></a><a class="card" href="vscode-with-ai.html"><h3>Fix code errors in VS Code with AI</h3><p>Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.</p></a><a class="card" href="after-effects-with-ai.html"><h3>Make motion graphics in After Effects with AI</h3><p>Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

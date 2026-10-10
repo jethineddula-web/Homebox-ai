@@ -1,0 +1,56 @@
+<!-- title: Make motion graphics in After Effects with AI -->
+<!-- description: Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step. -->
+<!-- type: article -->
+<!-- published: 2026-10-01 -->
+<!-- category: Design -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Make motion graphics in After Effects with AI</h1>{{articleMeta}}</div>
+
+  <p>After Effects can be scripted with ExtendScript, which can create compositions, add layers, set keyframes and fill the render queue. Building a lower third or a title sequence by script is fast, but writing the script is fiddly. With Homebox, the AI writes it, After Effects runs it, and you approve each step.</p>
+
+  <h2>One-time setup</h2>
+  <ol class="steps">
+    <li><b>Allow scripts to write files</b>In After Effects choose <b>Edit → Preferences → Scripting &amp; Expressions</b> and tick <b>Allow Scripts to Write Files and Access Network</b>. Homebox reads each step's result back through a small file, so this setting is required.</li>
+    <li><b>Turn on After Effects in Homebox</b>Go to <b>Apps → After Effects</b>, switch on <b>Let AI control After Effects</b> and click <b>Test connection</b> while After Effects is open.</li>
+  </ol>
+
+  <h2>Build a title animation</h2>
+  <p>Start a new chat, click the Homebox button and ask:</p>
+  <pre>In After Effects, create a 1920x1080, 30 fps, 8-second comp
+called "Intro". Add a dark background solid, then a text layer
+"Summer Showcase" that slides in from the left over the first
+second with an ease, holds, and fades out over the last second.
+Add a smaller subtitle that appears 0.5 s after the title.
+Report the layer names when done.</pre>
+  <p>Each approved step is wrapped in an undo group, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in After Effects removes the whole step. Ask for one element per step, such as the comp, then the title, then the animation, so you can preview as you go.</p>
+
+  <h2>Useful follow-ups</h2>
+  <ul>
+    <li>"Make the slide-in use a stronger ease out." The AI adjusts keyframe interpolation.</li>
+    <li>"Add a 2-pixel accent line under the title that grows from 0 to full width." A shape layer with an animated trim path or scale.</li>
+    <li>"Duplicate the comp for a 1080x1920 vertical version and re-center everything."</li>
+    <li>"Add the comp to the render queue with the default settings, output to the sandbox folder."</li>
+  </ul>
+
+  <h2>Tips</h2>
+  <ul>
+    <li><b>Indexes start at 1.</b> In ExtendScript, <code>app.project.item(1)</code> is the first item. If the AI picks the wrong comp, ask it to find comps by name instead.</li>
+    <li><b>Expressions are text.</b> The AI can add expressions such as <code>wiggle(2, 10)</code> to properties. Ask for expressions when you want motion that adapts to changes.</li>
+    <li><b>Save often.</b> Undo covers each step, but saving the project (or asking the AI to save a copy into the sandbox) protects longer sessions.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"did not answer in time"</b>: the preference in step 1 is off, or a dialog is open in After Effects.</li>
+    <li><b>"not found in Program Files"</b>: After Effects is installed in an unusual place. Reinstall it to the default location.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Make a lower third with my name and role that animates in from the bottom and out after four seconds."</i></li>
+    <li><i>"Create a 15-second countdown comp from 10 to 0 with a pulse on each number."</i></li>
+    <li><i>"Add a vignette and a slow push-in (scale 100% to 110%) to the Intro comp."</i></li>
+    <li><i>"List every comp in the project with its size, frame rate and duration."</i></li>
+  </ul>
+</div>

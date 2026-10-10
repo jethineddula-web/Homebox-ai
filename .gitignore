@@ -1,0 +1,12 @@
+# Installed packages and build output (rebuild with: npm install, npm run dist)
+node_modules/
+homebox-app/dist/
+
+# Release binaries are uploaded to the download host, not stored in git
+*.exe
+*.blockmap
+
+# Logs and local junk
+*.log
+.DS_Store
+Thumbs.db

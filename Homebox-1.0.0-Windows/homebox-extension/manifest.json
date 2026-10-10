@@ -2,34 +2,78 @@
   "manifest_version": 3,
   "name": "Homebox — let web AI work on your computer",
   "short_name": "Homebox",
-  "version": "1.0.0",
-  "description": "Connects AI chat sites (LMArena, ChatGPT, Gemini, Claude, DeepSeek…) to a sandbox folder on your computer through the Homebox app.",
+  "version": "2.1.0",
+  "description": "Let ChatGPT, Claude, Gemini and other AI chats work in a folder on your PC and in your apps. You approve every step.",
   "author": "Jethin Production",
-  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
-  "action": { "default_popup": "popup.html", "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" } },
-  "background": { "service_worker": "background.js" },
-  "permissions": ["storage", "scripting", "tabs"],
-  "host_permissions": ["http://127.0.0.1/*"],
-  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "omnibox": {
+    "keyword": "hb"
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+Shift+H"
+      },
+      "description": "Show or hide the Homebox panel on this page"
+    }
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
   "content_scripts": [
     {
       "matches": [
-        "https://lmarena.ai/*", "https://*.lmarena.ai/*",
-        "https://chatgpt.com/*", "https://chat.openai.com/*",
-        "https://gemini.google.com/*", "https://aistudio.google.com/*",
+        "https://lmarena.ai/*",
+        "https://*.lmarena.ai/*",
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://gemini.google.com/*",
+        "https://aistudio.google.com/*",
         "https://claude.ai/*",
         "https://chat.deepseek.com/*",
-        "https://grok.com/*", "https://x.com/i/grok*",
+        "https://grok.com/*",
+        "https://x.com/i/grok*",
         "https://chat.qwen.ai/*",
         "https://chat.mistral.ai/*",
-        "https://www.kimi.com/*", "https://kimi.com/*", "https://kimi.moonshot.cn/*",
+        "https://www.kimi.com/*",
+        "https://kimi.com/*",
+        "https://kimi.moonshot.cn/*",
         "https://www.perplexity.ai/*",
         "https://copilot.microsoft.com/*",
         "https://poe.com/*",
         "https://huggingface.co/chat/*",
         "https://chat.z.ai/*"
       ],
-      "js": ["content.js"],
+      "js": [
+        "router.js",
+        "askbox.js",
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ]

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approvals or Full access: when to let AI work on its own · Homebox</title>
+<meta name="description" content="How Homebox's approvals and Full access work, what each is good for, and a simple rule for deciding when to let an AI run without asking.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/approvals-or-full-access.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Approvals or Full access: when to let AI work on its own · Homebox">
+<meta property="og:description" content="How Homebox's approvals and Full access work, what each is good for, and a simple rule for deciding when to let an AI run without asking.">
+<meta property="og:url" content="https://www.example.com/guides/approvals-or-full-access.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/settings.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Approvals or Full access: when to let AI work on its own","description":"How Homebox's approvals and Full access work, what each is good for, and a simple rule for deciding when to let an AI run without asking.","image":"https://www.example.com/assets/screens/settings.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/approvals-or-full-access.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Approvals or Full access: when to let AI work on its own","item":"https://www.example.com/guides/approvals-or-full-access.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Approvals or Full access: when to let AI work on its own</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Approvals or Full access: when to let AI work on its own</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>Homebox gives you two ways to work. With approvals, the AI asks before every change and you click Approve or Deny. With Full access, it runs everything you've allowed without asking. Neither is "right". Each fits different situations, and switching takes one click.</p>
+
+  <figure><img src="../assets/screens/settings.png" alt="Homebox Settings with the Full access switch and per-permission options: Automatic, Ask me or Off" width="1280" height="800" loading="lazy"><figcaption>Settings: Full access at the top, and a choice of Automatic, Ask me or Off for each kind of action.</figcaption></figure>
+
+  <h2>How the pieces fit together</h2>
+  <ul>
+    <li><b>Permissions</b> decide what the AI may do at all: read files, change files, run commands, and each app. Each can be <b>Off</b>, <b>Ask me</b> or (for reading and changing files) <b>Automatic</b>.</li>
+    <li><b>Full access</b> turns every "Ask me" into "do it", for everything that isn't Off. Off stays off.</li>
+    <li><b>Pause</b> stops everything immediately, whatever the other settings say.</li>
+  </ul>
+  <p>The defaults are cautious: reading is automatic, changing files asks, and commands and apps are off.</p>
+
+  <h2>When approvals are the better choice</h2>
+  <ul>
+    <li>The sandbox contains files you didn't write, such as downloaded code or documents from others. See <a href="prompt-injection-explained.html">prompt injection</a>.</li>
+    <li>Commands or app scripts are switched on. They can reach outside the sandbox.</li>
+    <li>You're working in Excel or PowerPoint, which can't undo script changes.</li>
+    <li>You're still learning what a particular AI site does with your tasks.</li>
+  </ul>
+
+  <h2>When Full access is the better choice</h2>
+  <ul>
+    <li>You're building your own project from scratch in a fresh folder.</li>
+    <li>Only file permissions are on, so everything the AI does can be undone.</li>
+    <li>The task has many small steps, and approving each one would slow you down without adding safety.</li>
+    <li>You've committed to Git or made a backup first. See <a href="undo-backups-git.html">Undo, backups and Git</a>.</li>
+  </ul>
+
+  <h2>A simple rule</h2>
+  <div class="callout"><p><b>Full access is fine when everything the AI can do is undoable and the folder only contains your own work.</b> As soon as commands, app scripts or other people's files are involved, go back to approvals.</p></div>
+
+  <h2>Reviewing approvals quickly</h2>
+  <ul>
+    <li>On the Approvals page, <kbd>Enter</kbd> approves and <kbd>Esc</kbd> denies the top request.</li>
+    <li>The chat-page panel shows approvals too, so you don't need to switch windows.</li>
+    <li>Requests you ignore are denied automatically after five minutes, so nothing runs while you're away.</li>
+  </ul>
+
+  <h2>Watching a Full access session</h2>
+  <p>While Full access is on, an orange banner in Homebox reminds you, and the Activity page lists every action as it happens. If something looks wrong, click <b>Pause</b> first, then review. Undo what you don't want, and turn Full access off before continuing.</p>
+
+  <h2>Common questions</h2>
+  <h3>Does Full access stay on after a restart?</h3>
+  <p>Yes. It's a saved setting, so it stays on until you turn it off. The orange banner shows whenever it's on, so you won't forget.</p>
+  <h3>Can the AI turn on Full access by itself?</h3>
+  <p>No. Only you can change it, in the Homebox window. None of the AI's tools can change Homebox's settings.</p>
+  <h3>Does Full access turn on apps or commands?</h3>
+  <p>No. It only removes the question for things you've already allowed. Anything set to Off stays off, and the AI isn't even told those tools exist.</p>
+  <h3>What happens to steps that were waiting when I turn it on?</h3>
+  <p>They're approved straight away, so the AI isn't left stuck. Check the Approvals page before you switch if you'd rather review them first.</p>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="photoshop-with-ai.html"><h3>Automate repetitive Photoshop work with AI</h3><p>Let an AI drive Photoshop through Homebox: batch-resize and export images and build layered templates, with every step shown for approval.</p></a><a class="card" href="unreal-with-ai.html"><h3>Block out a level in Unreal Engine with AI</h3><p>Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.</p></a><a class="card" href="houdini-with-ai.html"><h3>Build procedural setups in Houdini with AI</h3><p>Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

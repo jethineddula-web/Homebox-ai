@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automate repetitive Photoshop work with AI · Homebox</title>
+<meta name="description" content="Let an AI drive Photoshop through Homebox: batch-resize and export images and build layered templates, with every step shown for approval.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/photoshop-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Automate repetitive Photoshop work with AI · Homebox">
+<meta property="og:description" content="Let an AI drive Photoshop through Homebox: batch-resize and export images and build layered templates, with every step shown for approval.">
+<meta property="og:url" content="https://www.example.com/guides/photoshop-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/approvals.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Automate repetitive Photoshop work with AI","description":"Let an AI drive Photoshop through Homebox: batch-resize and export images and build layered templates, with every step shown for approval.","image":"https://www.example.com/assets/screens/approvals.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/photoshop-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Automate repetitive Photoshop work with AI","item":"https://www.example.com/guides/photoshop-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Automate repetitive Photoshop work with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Automate repetitive Photoshop work with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>Photoshop has had a scripting language for a long time: ExtendScript, an older version of JavaScript that can do almost anything the menus can. Few people learn it, though. With Homebox, the AI writes the ExtendScript, Photoshop runs it, and you approve each step. It's ideal for the repetitive jobs that eat an afternoon: resizing a folder of images, exporting variants, or setting up a layered template.</p>
+
+  <h2>Connect Photoshop</h2>
+  <p>There's nothing to install. Open Photoshop, then in Homebox go to <b>Apps → Photoshop</b>, switch on <b>Let AI control Photoshop</b> and click <b>Test connection</b>. Homebox talks to Photoshop through Windows' own automation system, and only while Photoshop is open.</p>
+
+  <h2>Example 1: resize and export a folder of images</h2>
+  <p>Put the images in your sandbox folder, for example in <code>photos/</code>, then ask:</p>
+  <pre>In Photoshop, open every JPG in the photos folder of my sandbox,
+resize each one to 1600 px on the long side, and save it as a
+high-quality JPG into an "export" folder next to it, with the same
+name. Close each document without saving the original. Do it in
+small batches and report how many you've done.</pre>
+  <p>The AI uses the <code>SANDBOX</code> variable Homebox provides to find your folder, and works in batches so you can check the first few results before it continues.</p>
+
+  <h2>Example 2: a social media template</h2>
+  <pre>In Photoshop, make a 1080 x 1350 document called "Post template"
+with these layers: Background (solid #1d1c1a), Photo (empty, for a
+picture), Title (white text, 72 pt, top), Footer (small text,
+bottom). Group the text layers as "Text".</pre>
+  <p>When a document is open, Homebox wraps each step in a single History state, so one <kbd>Ctrl</kbd>+<kbd>Z</kbd> in Photoshop undoes the whole step.</p>
+
+  <figure><img src="../assets/screens/approvals.png" alt="A Homebox approval card showing the full content of a step before it runs" width="1280" height="800" loading="lazy"><figcaption>Every step is shown in full before it runs. Approve it, deny it, or let it time out.</figcaption></figure>
+
+  <h2>Things to know about ExtendScript</h2>
+  <ul>
+    <li><b>It's old JavaScript.</b> No arrow functions or <code>let</code>/<code>const</code>. The AI is told this, but if a step fails with a syntax error, remind it: "use ES3 ExtendScript".</li>
+    <li><b>The last line is the result.</b> The AI ends each script with a short message, such as how many files it processed, which comes back to it.</li>
+    <li><b>Dialogs block scripts.</b> If a Save or warning dialog is open, close it before approving the next step.</li>
+  </ul>
+
+  <h2>Keeping originals safe</h2>
+  <p>Photoshop scripts can save over files anywhere, not just in the sandbox. Two habits keep you safe:</p>
+  <ul>
+    <li>Ask the AI to always write results to a new folder, never over the originals.</li>
+    <li>Read the approval card: it shows the full script, including every path it saves to.</li>
+  </ul>
+
+  <p>Illustrator works the same way: turn it on under Apps, and the AI can draw shapes, set text and manage artboards with ExtendScript.</p>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add my logo.png from the sandbox to the bottom-right corner of every image in the export folder, at 20% width."</i></li>
+    <li><i>"Make three colour variants of the Post template: dark, light and green."</i></li>
+    <li><i>"Rename the layers in the open document so they describe their content."</i></li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="unreal-with-ai.html"><h3>Block out a level in Unreal Engine with AI</h3><p>Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.</p></a><a class="card" href="houdini-with-ai.html"><h3>Build procedural setups in Houdini with AI</h3><p>Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.</p></a><a class="card" href="vscode-with-ai.html"><h3>Fix code errors in VS Code with AI</h3><p>Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fix code errors in VS Code with AI · Homebox</title>
+<meta name="description" content="Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/vscode-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Fix code errors in VS Code with AI · Homebox">
+<meta property="og:description" content="Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.">
+<meta property="og:url" content="https://www.example.com/guides/vscode-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/vscode.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Fix code errors in VS Code with AI","description":"Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.","image":"https://www.example.com/assets/screens/vscode.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/vscode-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Fix code errors in VS Code with AI","item":"https://www.example.com/guides/vscode-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Fix code errors in VS Code with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Fix code errors in VS Code with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 4 min read</p></div>
+
+  <p>Most AI coding help still happens in a chat window: you paste an error, the AI suggests a fix, you copy it back, run it, and repeat. With Homebox and its small VS Code extension, the AI can look at the same errors you see in VS Code, change the files itself and open them for you. You stay in charge: every change is shown before it happens, and anything can be undone.</p>
+
+  <figure><img src="../assets/screens/vscode.png" alt="The VS Code panel in Homebox with its connection status and numbered setup steps" width="1280" height="800" loading="lazy"><figcaption>The VS Code panel in Homebox walks you through setup and shows whether VS Code is connected.</figcaption></figure>
+
+  <h2>What the AI can and can't see</h2>
+  <p>The Homebox extension for VS Code gives the AI four things it normally lacks:</p>
+  <ul>
+    <li><b>Your active file and selection</b>, so you can say "fix the function I've selected".</li>
+    <li><b>Which files have unsaved changes.</b> The AI is told never to overwrite those, and to ask you to save first.</li>
+    <li><b>The Problems panel</b>: the same errors and warnings VS Code shows you, with file, line and message.</li>
+    <li><b>A way to open a file at a line</b>, so it can show you what it changed.</li>
+  </ul>
+  <p>It only ever reports files inside your sandbox folder. If another project is open in a different window, the AI sees nothing from it, not even the file names.</p>
+
+  <h2>1. Set it up once</h2>
+  <ol class="steps">
+    <li><b>Turn on VS Code in Homebox</b>Open <b>Apps → VS Code</b> and switch on <b>Let AI control VS Code</b>.</li>
+    <li><b>Install the extension</b>Switch on <b>Install the Homebox extension in VS Code</b>. Homebox uses VS Code's own installer, so there's nothing to download separately.</li>
+    <li><b>Reload VS Code</b>Close and reopen VS Code, or run <b>Developer: Reload Window</b> from the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>). A <b>Homebox</b> item appears in the status bar at the bottom right.</li>
+    <li><b>Make your project the sandbox</b>Open your project folder, click the Homebox item in the status bar and choose <b>Use this folder as the AI sandbox</b>. The item then says <b>AI works here</b>.</li>
+  </ol>
+
+  <h2>2. Ask for a fix</h2>
+  <p>Start a new chat on your AI site, click the round Homebox button and give a task like this:</p>
+  <pre>Look at the errors VS Code shows in this project and fix them.
+Don't change behaviour, only fix the errors. After each change,
+check the Problems panel again. When there are no errors left,
+open the main file you changed.</pre>
+  <p>A typical session goes like this:</p>
+  <ol>
+    <li>The AI calls <code>vscode_info</code> and <code>vscode_problems</code> to see where the errors are.</li>
+    <li>It reads the files involved with <code>read_file</code>.</li>
+    <li>It fixes them with <code>edit_file</code>, which replaces an exact piece of text. You see the old and new text side by side before approving.</li>
+    <li>It checks <code>vscode_problems</code> again. If new errors appear, it keeps going.</li>
+    <li>Finally it calls <code>vscode_open</code>, and the changed file opens in VS Code at the right line.</li>
+  </ol>
+
+  <h2>3. Adding and deleting files</h2>
+  <p>The AI can create new files with <code>write_file</code> and remove old ones with <code>delete_path</code>. Deleting is deliberately careful:</p>
+  <ul>
+    <li>Homebox makes a full backup first, so <b>Undo</b> on the Activity page brings the file or folder back exactly.</li>
+    <li>It refuses to delete the whole sandbox, folders that contain protected files (such as <code>.env</code> or keys), and anything too large to back up.</li>
+    <li>Like any change, a delete waits for your approval unless you've turned on Full access.</li>
+  </ul>
+
+  <h2>4. Working on several projects</h2>
+  <p>Every VS Code window shows Homebox in its status bar. The window the AI works in says <b>AI works here</b>; the others say <b>Use this folder</b>. Click it to move the AI to that project. Folders you've used before switch without asking again. Start a new chat when you switch, so the AI doesn't mix up two projects.</p>
+
+  <h2>Tips for better fixes</h2>
+  <ul>
+    <li><b>Save before you start.</b> Unsaved edits in VS Code and changes on disk can conflict.</li>
+    <li><b>Use Git.</b> Committing before a big AI session gives you a second safety net on top of Homebox's Undo. See <a href="undo-backups-git.html">Undo, backups and Git</a>.</li>
+    <li><b>Be specific about scope.</b> "Only change files in <code>src/api</code>" keeps the AI focused.</li>
+    <li><b>Ask for tests.</b> If you allow commands, "run the tests and fix failures before saying DONE" catches mistakes early.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"VS Code is not connected"</b>: reload VS Code after installing, and check that the Homebox item is in the status bar.</li>
+    <li><b>Homebox is missing in one window</b>: reload that window. Homebox also works in Restricted Mode, in folders you haven't marked as trusted.</li>
+    <li><b>"Sandbox folder not open there"</b>: VS Code is connected but has a different folder open. Click <b>Use this folder</b> in the window you want.</li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="after-effects-with-ai.html"><h3>Make motion graphics in After Effects with AI</h3><p>Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.</p></a><a class="card" href="prompt-injection-explained.html"><h3>Prompt injection: what it is and how to stay safe</h3><p>A plain-language explanation of prompt injection, why it matters when AI can act on your computer, and the practical habits and Homebox settings that keep you safe.</p></a><a class="card" href="powerpoint-with-ai.html"><h3>Turn notes into a PowerPoint deck with AI</h3><p>Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

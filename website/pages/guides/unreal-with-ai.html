@@ -1,0 +1,63 @@
+<!-- title: Block out a level in Unreal Engine with AI -->
+<!-- description: Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step. -->
+<!-- type: article -->
+<!-- published: 2026-10-01 -->
+<!-- category: Games -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Block out a level in Unreal Engine with AI</h1>{{articleMeta}}</div>
+
+  <p>A blockout is the rough first version of a level: simple shapes that show layout, scale and flow before any real art exists. It's repetitive work, which makes it a good job for AI. The Unreal Editor can be scripted in Python, and Homebox lets an AI chat send that Python, step by step, with your approval.</p>
+
+  <h2>Set up Unreal (once per project)</h2>
+  <ol class="steps">
+    <li><b>Enable Python</b>In the Unreal Editor choose <b>Edit → Plugins</b>, search for <b>Python Editor Script Plugin</b>, enable it and restart the editor.</li>
+    <li><b>Turn on Unreal in Homebox</b>Open <b>Apps → Unreal Engine</b> and switch on <b>Let AI control Unreal Engine</b>.</li>
+    <li><b>Start the bridge</b>Open <b>Window → Output Log</b>, switch the <b>Cmd</b> drop-down to <b>Python</b>, paste the setup line from Homebox and press Enter. The log prints <i>Homebox: Unreal Engine is listening on port 7015</i>.</li>
+    <li><b>Optional: start it with the project</b>In <b>Edit → Project Settings → Plugins → Python</b>, add the bridge file path shown in Homebox under <b>Startup Scripts</b>.</li>
+  </ol>
+
+  <h2>Ask for a blockout</h2>
+  <pre>In Unreal, block out a small courtyard using the engine's basic
+shapes (/Engine/BasicShapes/Cube): a 20 m x 20 m floor, walls 4 m
+high on three sides with a 3 m gap on the fourth, two 1 m pillars
+near the gap, and a point light 6 m above the centre. Use
+centimetres, label every actor clearly (Blockout_Floor,
+Blockout_Wall_N …) and put them in a folder called Blockout.
+Report each actor's location and scale.</pre>
+  <p>A typical step spawns a few actors through the editor subsystem:</p>
+  <pre>actors = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+cube = unreal.EditorAssetLibrary.load_asset('/Engine/BasicShapes/Cube')
+floor = actors.spawn_actor_from_object(cube, unreal.Vector(0, 0, 0))
+floor.set_actor_scale3d(unreal.Vector(20, 20, 0.1))
+floor.set_actor_label('Blockout_Floor')
+floor.set_folder_path('Blockout')
+print(floor.get_actor_label(), floor.get_actor_location())</pre>
+  <p>Each approved step runs inside one editor transaction, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in Unreal removes the whole step.</p>
+
+  <h2>Working with scale</h2>
+  <p>Unreal uses centimetres, and the basic cube is 100 units across. Most blockout mistakes are scale mistakes, so ask the AI to report locations and scales after each step. Then you can say "the walls overlap the floor edge by 50 cm, move them in" and it can fix it precisely.</p>
+
+  <h2>Ideas to try next</h2>
+  <ul>
+    <li>"Add a PlayerStart at the courtyard entrance, facing inwards."</li>
+    <li>"Duplicate the courtyard 3 times along X with 5 m gaps, as a street."</li>
+    <li>"Give all Blockout actors a simple grey material instance so they read clearly."</li>
+    <li>"List every actor in the Blockout folder with its bounds."</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>No "Python" in the Cmd drop-down</b>: the Python Editor Script Plugin isn't enabled yet.</li>
+    <li><b>Works in one project but not another</b>: the plugin and startup script are set per project.</li>
+    <li><b>The editor stalls on a step</b>: very large spawns can take time. Ask for fewer actors per step.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a simple staircase of 10 steps leading to a 3 m high platform on the north wall."</i></li>
+    <li><i>"Place five point lights in a row along the courtyard with a warm colour."</i></li>
+    <li><i>"Snap every Blockout actor to a 50 cm grid and report anything that moved."</i></li>
+    <li><i>"Delete all actors in the Blockout folder except the floor. (Check the approval before you approve this one.)"</i></li>
+  </ul>
+</div>

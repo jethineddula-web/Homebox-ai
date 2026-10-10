@@ -1,0 +1,67 @@
+<!-- title: Turn notes into a PowerPoint deck with AI -->
+<!-- description: Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable. -->
+<!-- type: article -->
+<!-- published: 2026-10-01 -->
+<!-- category: Office -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Turn notes into a PowerPoint deck with AI</h1>{{articleMeta}}</div>
+
+  <p>Turning rough notes into slides is mostly typing and formatting. With Homebox, an AI can read your notes from the sandbox folder and build the deck directly in PowerPoint, while you watch the slides appear and approve each step.</p>
+
+  <div class="callout warn"><p><b>Save first.</b> PowerPoint can't undo changes made by scripts. Start from a new presentation or save a copy before you begin.</p></div>
+
+  <h2>Set up</h2>
+  <ol class="steps">
+    <li><b>Put your notes in the sandbox</b>Save them as a text or Markdown file, for example <code>notes/q3-plan.md</code>. Plain text works best.</li>
+    <li><b>Open PowerPoint</b>Start a blank presentation, or open the template you want to use.</li>
+    <li><b>Turn on PowerPoint in Homebox</b>Go to <b>Apps → PowerPoint</b>, switch on <b>Let AI control PowerPoint</b> and click <b>Test connection</b>.</li>
+  </ol>
+
+  <h2>Ask for the deck</h2>
+  <pre>Read notes/q3-plan.md. In PowerPoint, build a 6-slide deck from it:
+a title slide, an agenda, three content slides with at most five
+short bullet points each, and a "Next steps" slide. Use the open
+presentation's layouts. Keep the wording short and clear. Build one
+slide per step and tell me the slide titles as you go.</pre>
+  <p>The AI first reads your notes with <code>read_file</code>, then adds slides with short PowerShell steps that use PowerPoint's automation interface. A step might add a slide with the Title and Content layout, set the title and fill in the bullets. You see each script before it runs.</p>
+
+  <h2>Polish with follow-ups</h2>
+  <ul>
+    <li>"Slide 3 has too much text. Split it into two slides."</li>
+    <li>"Add speaker notes to every slide with what I should say."</li>
+    <li>"Make all titles the same size and left-aligned."</li>
+    <li>"Save the presentation into the sandbox as q3-plan.pptx."</li>
+  </ul>
+
+  <h2>Why one slide per step?</h2>
+  <p>Because script changes can't be undone in PowerPoint, small steps keep mistakes small. If a slide comes out wrong, delete it yourself and ask the AI to redo just that one.</p>
+
+  <h2>The same idea in Word and Excel</h2>
+  <ul>
+    <li><b>Word</b>: "Turn notes/meeting.md into a formatted one-page summary with headings." In Word, each AI step is a single Undo.</li>
+    <li><b>Excel</b>: "Make a table from data/sales.csv and add totals and a chart." See <a href="excel-with-ai.html">Automate Excel with AI</a>.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Could not reach PowerPoint"</b>: close any open dialog in PowerPoint and try again.</li>
+    <li><b>Wrong layout used</b>: ask the AI to list the layouts in the open presentation first, then name the one you want.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a timeline slide with four milestones from my notes, as a row of labelled boxes."</i></li>
+    <li><i>"Make every slide title start with a verb and stay under eight words."</i></li>
+    <li><i>"Add a final 'Questions?' slide with my contact details from notes/contact.md."</i></li>
+    <li><i>"Check every slide for more than five bullets and tell me which ones to shorten."</i></li>
+  </ul>
+
+  <h2>Tips for slides that work</h2>
+  <ul>
+    <li><b>One idea per slide.</b> Ask the AI to split any slide that tries to say two things.</li>
+    <li><b>Short bullets.</b> Five words or fewer per bullet reads well from the back of a room. Put the detail in the speaker notes.</li>
+    <li><b>Consistent layouts.</b> Ask the AI to use the same layout for every content slide, so the deck looks designed rather than assembled.</li>
+    <li><b>Check numbers yourself.</b> If the AI copies figures from your notes, compare them before you present. It may round or reorder them.</li>
+  </ul>
+</div>

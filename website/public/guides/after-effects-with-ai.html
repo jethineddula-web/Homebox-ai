@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make motion graphics in After Effects with AI · Homebox</title>
+<meta name="description" content="Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/after-effects-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Make motion graphics in After Effects with AI · Homebox">
+<meta property="og:description" content="Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.">
+<meta property="og:url" content="https://www.example.com/guides/after-effects-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Make motion graphics in After Effects with AI","description":"Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/after-effects-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Make motion graphics in After Effects with AI","item":"https://www.example.com/guides/after-effects-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Make motion graphics in After Effects with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Make motion graphics in After Effects with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>After Effects can be scripted with ExtendScript, which can create compositions, add layers, set keyframes and fill the render queue. Building a lower third or a title sequence by script is fast, but writing the script is fiddly. With Homebox, the AI writes it, After Effects runs it, and you approve each step.</p>
+
+  <h2>One-time setup</h2>
+  <ol class="steps">
+    <li><b>Allow scripts to write files</b>In After Effects choose <b>Edit → Preferences → Scripting &amp; Expressions</b> and tick <b>Allow Scripts to Write Files and Access Network</b>. Homebox reads each step's result back through a small file, so this setting is required.</li>
+    <li><b>Turn on After Effects in Homebox</b>Go to <b>Apps → After Effects</b>, switch on <b>Let AI control After Effects</b> and click <b>Test connection</b> while After Effects is open.</li>
+  </ol>
+
+  <h2>Build a title animation</h2>
+  <p>Start a new chat, click the Homebox button and ask:</p>
+  <pre>In After Effects, create a 1920x1080, 30 fps, 8-second comp
+called "Intro". Add a dark background solid, then a text layer
+"Summer Showcase" that slides in from the left over the first
+second with an ease, holds, and fades out over the last second.
+Add a smaller subtitle that appears 0.5 s after the title.
+Report the layer names when done.</pre>
+  <p>Each approved step is wrapped in an undo group, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in After Effects removes the whole step. Ask for one element per step, such as the comp, then the title, then the animation, so you can preview as you go.</p>
+
+  <h2>Useful follow-ups</h2>
+  <ul>
+    <li>"Make the slide-in use a stronger ease out." The AI adjusts keyframe interpolation.</li>
+    <li>"Add a 2-pixel accent line under the title that grows from 0 to full width." A shape layer with an animated trim path or scale.</li>
+    <li>"Duplicate the comp for a 1080x1920 vertical version and re-center everything."</li>
+    <li>"Add the comp to the render queue with the default settings, output to the sandbox folder."</li>
+  </ul>
+
+  <h2>Tips</h2>
+  <ul>
+    <li><b>Indexes start at 1.</b> In ExtendScript, <code>app.project.item(1)</code> is the first item. If the AI picks the wrong comp, ask it to find comps by name instead.</li>
+    <li><b>Expressions are text.</b> The AI can add expressions such as <code>wiggle(2, 10)</code> to properties. Ask for expressions when you want motion that adapts to changes.</li>
+    <li><b>Save often.</b> Undo covers each step, but saving the project (or asking the AI to save a copy into the sandbox) protects longer sessions.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"did not answer in time"</b>: the preference in step 1 is off, or a dialog is open in After Effects.</li>
+    <li><b>"not found in Program Files"</b>: After Effects is installed in an unusual place. Reinstall it to the default location.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Make a lower third with my name and role that animates in from the bottom and out after four seconds."</i></li>
+    <li><i>"Create a 15-second countdown comp from 10 to 0 with a pulse on each number."</i></li>
+    <li><i>"Add a vignette and a slow push-in (scale 100% to 110%) to the Intro comp."</i></li>
+    <li><i>"List every comp in the project with its size, frame rate and duration."</i></li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="prompt-injection-explained.html"><h3>Prompt injection: what it is and how to stay safe</h3><p>A plain-language explanation of prompt injection, why it matters when AI can act on your computer, and the practical habits and Homebox settings that keep you safe.</p></a><a class="card" href="powerpoint-with-ai.html"><h3>Turn notes into a PowerPoint deck with AI</h3><p>Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable.</p></a><a class="card" href="undo-backups-git.html"><h3>Undo, backups and Git: a safety net for AI-made changes</h3><p>How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

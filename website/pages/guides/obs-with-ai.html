@@ -1,0 +1,72 @@
+<!-- title: Control OBS Studio with AI -->
+<!-- description: Turn on OBS Studio's WebSocket server, connect it to Homebox, and let an AI switch scenes, mute sources and start recording on request. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: Streaming -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Control OBS Studio with AI</h1>{{articleMeta}}</div>
+
+  <p>OBS Studio has a built-in remote control called obs-websocket. Homebox uses it to let an AI send OBS requests, such as "switch to the Gameplay scene" or "start recording", with your approval.</p>
+
+  <h2>1. Turn on the WebSocket server in OBS</h2>
+  <ol>
+    <li>In OBS, open <b>Tools → WebSocket Server Settings</b>.</li>
+    <li>Tick <b>Enable WebSocket server</b>. Leave the port at 4455 unless you changed it.</li>
+    <li>Keep <b>Enable Authentication</b> on and click <b>Show Connect Info</b> to see the password.</li>
+  </ol>
+
+  <h2>2. Connect Homebox</h2>
+  <ol>
+    <li>In Homebox, open <b>Apps → OBS Studio</b> and turn it on.</li>
+    <li>Paste the password into the box, check the port and click <b>Save</b>. Homebox tests the connection straight away.</li>
+    <li>Start a <b>new chat</b> so the AI learns about the OBS tool.</li>
+  </ol>
+
+  <h2>3. Things to ask</h2>
+  <ul>
+    <li>"List my OBS scenes and sources." (uses <code>GetSceneList</code> and <code>GetInputList</code>)</li>
+    <li>"Switch to the Just Chatting scene." (<code>SetCurrentProgramScene</code>)</li>
+    <li>"Mute the Mic/Aux input." (<code>SetInputMute</code>)</li>
+    <li>"Start recording, and stop it in the next step when I say so." (<code>StartRecord</code> / <code>StopRecord</code>)</li>
+    <li>"Create a new scene called Break with a text source that says Back soon."</li>
+  </ul>
+  <p>Each request appears in Homebox with its data for approval. Results come back as JSON, so the AI can see scene names and states.</p>
+
+  <div class="callout warn"><p>Requests can change what you stream or record. Keep approvals on while you're live, and use Full access only for setup work off-stream.</p></div>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"OBS is not reachable"</b>: OBS is closed or the WebSocket server is off.</li>
+    <li><b>"OBS rejected the password"</b>: copy it again from Show Connect Info. It changes if you click Generate Password.</li>
+    <li><b>"OBS error 600"</b> or similar: the scene or input name doesn't exist. Ask the AI to list scenes first.</li>
+  </ul>
+
+  <h2>Example: a "be right back" routine</h2>
+  <p>Once OBS is connected, one sentence can replace several clicks:</p>
+  <pre>In OBS: switch to the "Be right back" scene, mute Mic/Aux,
+and pause the recording. When I say "back", do the reverse.</pre>
+  <p>The AI turns this into a short series of requests: <code>SetCurrentProgramScene</code>, <code>SetInputMute</code> and <code>PauseRecord</code>. Each appears in Homebox for approval, with its exact data.</p>
+
+  <h2>Useful request names</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Request</th><th>What it does</th></tr>
+    <tr><td><code>GetSceneList</code></td><td>Lists your scenes and shows which one is live.</td></tr>
+    <tr><td><code>SetCurrentProgramScene</code></td><td>Switches the live scene.</td></tr>
+    <tr><td><code>GetInputList</code></td><td>Lists your sources (inputs), such as microphones and cameras.</td></tr>
+    <tr><td><code>SetInputMute</code></td><td>Mutes or unmutes a source.</td></tr>
+    <tr><td><code>StartRecord</code> / <code>StopRecord</code> / <code>PauseRecord</code></td><td>Controls recording.</td></tr>
+    <tr><td><code>StartStream</code> / <code>StopStream</code></td><td>Controls streaming. Approve these with care.</td></tr>
+    <tr><td><code>SetSceneItemEnabled</code></td><td>Shows or hides a source inside a scene.</td></tr>
+  </table></div>
+  <p>The AI knows these names, but you can ask it to "list scenes and sources first" so it uses your exact names.</p>
+
+  <h2>Staying safe while you are live</h2>
+  <p>OBS requests take effect immediately, and some can't be taken back: once a stream has started, viewers have seen it. A few habits help:</p>
+  <ul>
+    <li><b>Keep approvals on while live.</b> Full access is fine for building scenes before a stream, but not during one.</li>
+    <li><b>Prepare scenes in advance.</b> Let the AI build and name your scenes while you are offline. While live, only switch between them.</li>
+    <li><b>Read stream and record requests twice.</b> <code>StartStream</code> and <code>StopStream</code> are the ones that matter most.</li>
+    <li><b>Use Pause in an emergency.</b> One click in Homebox stops all AI access, without touching OBS itself.</li>
+  </ul>
+</div>

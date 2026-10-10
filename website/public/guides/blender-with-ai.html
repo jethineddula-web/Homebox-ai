@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model a scene in Blender with AI · Homebox</title>
+<meta name="description" content="Connect Blender to Homebox and let an AI chat build a low-poly scene with bpy, one undoable step at a time, then refine it with feedback.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/blender-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Model a scene in Blender with AI · Homebox">
+<meta property="og:description" content="Connect Blender to Homebox and let an AI chat build a low-poly scene with bpy, one undoable step at a time, then refine it with feedback.">
+<meta property="og:url" content="https://www.example.com/guides/blender-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-09-30">
+<meta property="article:modified_time" content="2026-09-30">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Model a scene in Blender with AI","description":"Connect Blender to Homebox and let an AI chat build a low-poly scene with bpy, one undoable step at a time, then refine it with feedback.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-09-30","dateModified":"2026-09-30","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/blender-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Model a scene in Blender with AI","item":"https://www.example.com/guides/blender-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Model a scene in Blender with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Model a scene in Blender with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 30 September 2026 · 2 min read</p></div>
+
+  <p>Blender's Python API (<code>bpy</code>) can do almost anything you can do with the mouse. AI models know it well, but writing it by hand is slow. With Homebox, the AI runs its own scripts inside your open Blender, and each step is a single Ctrl+Z if you don't like it.</p>
+
+  <h2>1. Connect Blender (once)</h2>
+  <ol>
+    <li>In the Homebox window, open <b>Apps → Blender</b> and switch <b>Let AI control Blender</b> on.</li>
+    <li>In Blender, switch to the <b>Scripting</b> workspace. In the Python Console, paste the line shown in Homebox and press Enter. You'll see <i>Homebox: Blender is listening on port 7010</i>.</li>
+    <li>Back in Homebox, click <b>Test connection</b>. It should show your Blender version.</li>
+    <li>To skip step 2 next time, turn on <b>Start automatically</b>. Homebox adds its bridge to Blender's startup scripts.</li>
+  </ol>
+
+  <h2>2. Ask for a scene</h2>
+  <p>Start a <b>new chat</b> (so the AI learns about the Blender tool), open the Homebox panel and try:</p>
+  <pre>In Blender, build a low-poly campsite: a tent, a campfire with
+stones around it, three pine trees and a log to sit on.
+Name every object clearly, put them in a collection called
+"Campsite", keep everything within 10 m of the origin.
+After each object, print its location and dimensions.</pre>
+
+  <h2>3. What happens next</h2>
+  <p>The AI works in small steps: first it clears or inspects the scene, then adds objects one at a time with <code>bpy.ops.mesh.primitive_*</code> or builds meshes from data. Each step appears in Homebox for approval with the full Python code. After it runs, the printed locations come back to the AI, so it can space objects sensibly without seeing the viewport.</p>
+  <div class="callout"><p><b>Tip:</b> ask for materials in a separate step ("now give each object a simple coloured material"). Small steps are easier to check and to undo.</p></div>
+
+  <h2>4. Give visual feedback</h2>
+  <p>The AI can't see your viewport, so be concrete: "the tent is sinking into the ground by about half its height", "the trees are too uniform, vary their scale between 0.8 and 1.3". It will read the scene, adjust and report the new numbers.</p>
+
+  <h2>5. Save your work</h2>
+  <p>Ask: "Save the file as <code>campsite.blend</code> in the sandbox folder." The AI uses <code>SANDBOX</code>, a variable Homebox provides that points to your sandbox folder.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Blender is not listening"</b>: the bridge isn't running. Paste the setup line again or restart Blender with Start automatically on.</li>
+    <li><b>An operator fails with a context error</b>: tell the AI "use bpy.data instead of bpy.ops for that step". Data-API code doesn't depend on which window is active.</li>
+    <li><b>A step takes very long</b>: heavy modifiers or subdivision can be slow. Ask for lower detail while blocking out.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a sun light and a camera framing the whole campsite, then render a preview to the sandbox as preview.png."</i></li>
+    <li><i>"Turn the tent into a low-poly shape with flat shading and a red material."</i></li>
+    <li><i>"Scatter 30 small grass clumps randomly around the campfire, avoiding the tent."</i></li>
+    <li><i>"List every object with its dimensions so I can check the scale."</i></li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="approvals-or-full-access.html"><h3>Approvals or Full access: when to let AI work on its own</h3><p>How Homebox's approvals and Full access work, what each is good for, and a simple rule for deciding when to let an AI run without asking.</p></a><a class="card" href="photoshop-with-ai.html"><h3>Automate repetitive Photoshop work with AI</h3><p>Let an AI drive Photoshop through Homebox: batch-resize and export images and build layered templates, with every step shown for approval.</p></a><a class="card" href="unreal-with-ai.html"><h3>Block out a level in Unreal Engine with AI</h3><p>Enable Python in the Unreal Editor, connect it to Homebox, and let an AI chat place, name and arrange actors for a quick level blockout, one editor transaction per step.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

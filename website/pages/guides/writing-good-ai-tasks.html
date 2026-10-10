@@ -1,0 +1,50 @@
+<!-- title: How to write tasks AI can finish on its own -->
+<!-- description: Practical rules for writing AI tasks that run to completion with Homebox: describe outcomes, set constraints, ask for checks and break big jobs into stages. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: Tips -->
+<!-- image: screens/home.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>How to write tasks AI can finish on its own</h1>{{articleMeta}}</div>
+
+  <p>With Homebox, the AI doesn't just answer. It works through a task in rounds: it acts, reads the results and decides what to do next. Some tasks sail through to <b>DONE</b>. Others stall, loop or wander. Most of the difference is in how the task is written.</p>
+
+  <h2>1. Describe the outcome, not the steps</h2>
+  <p>"Write a Python script" leaves the AI guessing. "A script <code>rename.py</code> that renames every photo in <code>photos/</code> to its date taken, like <code>2024-05-01_001.jpg</code>" tells it when it's finished. A clear finish line is what lets it stop by itself.</p>
+
+  <h2>2. Name files and places</h2>
+  <p>Say where things go: "put styles in <code>css/site.css</code>", "the Maya group should be called <code>robot_grp</code>". Names make it easy for you to check the result, and for the AI to find its own work in later rounds.</p>
+
+  <h2>3. Give constraints up front</h2>
+  <ul>
+    <li>Tools: "plain HTML and CSS, no frameworks", "use only the Python standard library".</li>
+    <li>Scope: "don't touch files outside <code>src/</code>", "keep the existing layout".</li>
+    <li>Style: "comments in English, short functions".</li>
+  </ul>
+  <p>Constraints stated at the start cost nothing. Corrections after twenty files cost a lot.</p>
+
+  <h2>4. Ask it to check its own work</h2>
+  <p>AI models rarely verify unless asked. End with a check: "after writing, read the files back and make sure every page links to the others", or in 3D, "after each part, print its bounding box so we can see it lines up". With commands enabled, "run the tests and fix failures before saying DONE" is very effective.</p>
+
+  <h2>5. Break big jobs into stages</h2>
+  <p>For anything larger than an afternoon's work, ask for a plan first: "List the files you'll create and what each does. Don't write anything yet." Approve or adjust the plan, then say "Build stage 1." Small stages keep each round short and make mistakes easy to undo.</p>
+
+  <h2>6. Tell it what it can't see</h2>
+  <p>The AI only sees text. It can't see your screen, a 3D viewport or a rendered web page. Describe problems concretely: "the logo overlaps the menu on narrow screens", "the left arm is 20% longer than the right".</p>
+
+  <h2>7. Keep permissions tight</h2>
+  <p>Turn on only what the task needs. A website needs file changes but not commands. A Blender scene needs Blender, not Excel. Fewer tools means fewer surprises, and the AI picks the right tool faster.</p>
+
+  <h2>A template you can reuse</h2>
+  <pre>Goal: [what should exist when you're done]
+Files/places: [where things go, what they're called]
+Rules: [tools allowed, things not to change]
+Check: [how to verify before saying DONE]
+Work in small steps and stop when the goal is met.</pre>
+  <p>Paste this into the Homebox <b>New task</b> box, fill in the brackets and press <b>Start task</b>.</p>
+
+  <h2>Example: before and after</h2>
+  <p><b>Before:</b> <i>"Make me a website."</i> The AI has to guess everything, so it makes a generic page, stops early, and asks what you want.</p>
+  <p><b>After:</b> <i>"Goal: a one-page site for my photography, with a gallery of the images in photos/, a short About section and a contact email link. Files: index.html and style.css. Rules: plain HTML and CSS, works when opened directly. Check: read both files back and make sure every image path exists. Work in small steps and stop when the goal is met."</i></p>
+  <p>The second version takes a minute longer to write and usually saves many rounds of back-and-forth.</p>
+</div>

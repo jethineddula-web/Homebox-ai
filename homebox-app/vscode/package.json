@@ -1,0 +1,45 @@
+{
+  "name": "homebox-vscode",
+  "displayName": "Homebox",
+  "description": "Lets the Homebox app see your open files, selection and Problems, and open files for you. Homebox itself makes the code changes, with your approval.",
+  "version": "1.0.1",
+  "publisher": "jethinproduction",
+  "license": "UNLICENSED",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "main": "extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "homebox.useFolder",
+        "title": "Homebox: Use This Folder as the AI Sandbox"
+      },
+      {
+        "command": "homebox.status",
+        "title": "Homebox: Show Connection Status"
+      },
+      {
+        "command": "homebox.openApp",
+        "title": "Homebox: Open the Homebox App"
+      }
+    ]
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": false
+  }
+}

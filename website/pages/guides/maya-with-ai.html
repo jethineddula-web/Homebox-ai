@@ -1,0 +1,54 @@
+<!-- title: Build and rig a character in Maya with AI -->
+<!-- description: Set up Autodesk Maya with Homebox once, then let an AI build a named, grouped cartoon character with a basic skeleton, one undoable step at a time. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: 3D -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Build and rig a character in Maya with AI</h1>{{articleMeta}}</div>
+
+  <p>Maya was the first app Homebox supported, and it's still one of the most satisfying: you describe a character and watch it appear in the viewport, piece by piece. Every step runs through <code>maya.cmds</code> and is one Ctrl+Z in Maya.</p>
+
+  <h2>1. Set up Maya (once)</h2>
+  <ol>
+    <li>In Homebox, open the <b>Maya</b> page and turn on <b>Let AI control Maya</b>. Every step will still ask you first.</li>
+    <li>Turn on <b>Start with Maya automatically</b>. Homebox adds a small block to your <code>userSetup.py</code> so the secure Homebox bridge starts every time Maya opens. Unlike Maya's own command port, the bridge only accepts Homebox, with a secret key.</li>
+    <li>Restart Maya. The Script Editor prints <i>Homebox: Maya is listening on port 7017</i>.</li>
+    <li>Click <b>Test connection</b> in Homebox. It should say "Connected to Maya" with your version.</li>
+  </ol>
+
+  <h2>2. Describe the character</h2>
+  <p>Open a <b>new chat</b>, click the Homebox button and try:</p>
+  <pre>In Maya, build a simple cartoon robot: boxy body, round head
+with two eye spheres, cylinder arms and legs, antenna.
+Name every part (robot_head, robot_arm_L …), group everything
+under robot_grp, and keep it about 2 units tall standing on y=0.
+Build one body part per step, then check sizes with
+maya_scene_info. Finally add a basic joint chain for spine,
+arms and legs and bind the parts to it.</pre>
+
+  <h2>3. Follow along</h2>
+  <p>The AI starts with the body, then the head, limbs and details. Each step shows its Python for approval. After a few parts, it calls <code>maya_scene_info</code>, a read-only step that lists every object with its centre and size, and uses the numbers to line things up.</p>
+  <div class="callout"><p><b>Full access for modelling sessions:</b> once you trust the direction, turn on Full access so the AI builds without pausing. Keep the Maya undo queue as your safety net, and turn Full access off when you're done.</p></div>
+
+  <h2>4. Fix proportions with words</h2>
+  <p>"The arms reach the knees, shorten them by a third." "The head is inside the body, move it up until it just touches." The AI reads the scene again, changes only those parts and reports the new sizes.</p>
+
+  <h2>5. Save</h2>
+  <p>Ask the AI to save into the sandbox, for example <code>robot.ma</code>. It uses <code>cmds.file(rename=SANDBOX + '/robot.ma')</code>, then saves as Maya ASCII.</p>
+
+  <h2>If something goes wrong</h2>
+  <ul>
+    <li><b>"Maya did not answer in time"</b>: a dialog is probably open in Maya. Close it and approve the step again.</li>
+    <li><b>The AI says it doesn't have <code>maya_run_python</code></b>: Maya control was off when the chat started. Turn it on and start a new chat.</li>
+    <li><b>It worked, then stopped after restarting Maya</b>: turn on Start with Maya automatically so the port opens every time.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a simple three-point light rig around robot_grp and a camera that frames it."</i></li>
+    <li><i>"Create a bend deformer on the antenna so it can wobble."</i></li>
+    <li><i>"Set up a 48-frame idle animation: the robot bobs up and down by 0.1 units."</i></li>
+    <li><i>"List every joint with its parent so I can check the skeleton."</i></li>
+  </ul>
+</div>

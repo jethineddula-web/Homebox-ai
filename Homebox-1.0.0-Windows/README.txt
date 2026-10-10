@@ -1,3 +1,9 @@
+NOTE: This folder is the old Homebox 1.0. Use Homebox 2.0 instead (Homebox-Setup-2.0.0.exe).
+Homebox 1.0 controls Maya through Maya's command port 7001, which runs any code sent to it,
+even from a web page. If you used it, remove the commandPort(':7001') lines from
+Documents\maya\scripts\userSetup.py, or let Homebox 2.0 replace them with its secure bridge.
+Homebox 2.0 has no public internet link: it only answers your own computer.
+
 HOMEBOX 1.0 — let any web AI work in a folder on your computer
 by Jethin Production
 ====================================================================

@@ -1,0 +1,50 @@
+<!-- title: Supported apps -->
+<!-- description: Homebox lets AI work in 17 apps, from Maya, Blender and Unreal to Photoshop, Excel, OBS and VS Code. See what the AI can do in each and how to set it up. -->
+<div class="wrap page-hd">
+  <h1>Supported apps</h1>
+  <p>Besides files in your sandbox folder, Homebox can let the AI work live inside these programs. Every app is off until you turn it on in Homebox → Apps, and every step waits for your approval unless Full access is on.</p>
+</div>
+<div class="wrap">
+  <figure><img src="assets/screens/apps.png" alt="The Apps page in Homebox with a card for each supported app" width="1280" height="800" loading="lazy"><figcaption>Turn on only the apps you want. Each card opens step-by-step setup.</figcaption></figure>
+  <h2>3D, VFX and games</h2>
+  <div class="table-wrap"><table>
+    <tr><th>App</th><th>What the AI can do</th><th>Setup</th><th>Undo</th></tr>
+    <tr><td><b>Autodesk Maya</b></td><td>Model, name, group and rig objects with maya.cmds; read the scene to check sizes and positions</td><td>Turn on "Start with Maya automatically", or paste one line into the Script Editor</td><td>One Ctrl+Z per step</td></tr>
+    <tr><td><b>Blender</b></td><td>Create and edit objects, materials, lights and animation with bpy</td><td>Paste one line into the Python Console, turn on Start automatically, or install as an add-on</td><td>One Ctrl+Z per step</td></tr>
+    <tr><td><b>Houdini</b></td><td>Build node networks, set parameters, lay out SOPs</td><td>Paste one line into the Python Shell, or Start automatically</td><td>One undo group per step</td></tr>
+    <tr><td><b>3ds Max</b></td><td>Create and transform objects through pymxs</td><td>Paste one line into the Scripting Listener (Python), or Start automatically</td><td>One undo per step</td></tr>
+    <tr><td><b>Cinema 4D</b></td><td>Build scenes and MoGraph setups with the c4d module</td><td>Add the Homebox plugin folder in Preferences → Plugins</td><td>When the AI records undo</td></tr>
+    <tr><td><b>Nuke</b></td><td>Create and connect compositing nodes</td><td>Paste one line into the Script Editor, or Start automatically</td><td>One undo per step</td></tr>
+    <tr><td><b>Unreal Engine</b></td><td>Spawn and edit actors, manage assets in the editor</td><td>Enable the Python Editor Script Plugin, then paste one line in the Output Log (Python)</td><td>One transaction per step</td></tr>
+    <tr><td><b>Substance 3D Painter</b></td><td>Manage projects, texture sets and exports</td><td>Turn on Start automatically, then restart Painter</td><td>Not available</td></tr>
+  </table></div>
+
+  <h2>Code</h2>
+  <div class="table-wrap"><table>
+    <tr><th>App</th><th>What the AI can do</th><th>Setup</th></tr>
+    <tr><td><b>Visual Studio Code</b></td><td>Edit, add and delete code in your project while you watch. The AI sees your open files, your selection, unsaved files and the Problems panel, checks its own work for errors, and opens the files it changed.</td><td>Turn on "Install the Homebox extension in VS Code", reload VS Code, then click Homebox in the status bar → Use this folder as the AI sandbox</td></tr>
+  </table></div>
+
+  <h2>Adobe</h2>
+  <div class="table-wrap"><table>
+    <tr><th>App</th><th>What the AI can do</th><th>Setup</th></tr>
+    <tr><td><b>Photoshop</b></td><td>Create documents, layers, text and exports with ExtendScript</td><td>Just open Photoshop</td></tr>
+    <tr><td><b>Illustrator</b></td><td>Draw shapes, text and artboards</td><td>Just open Illustrator</td></tr>
+    <tr><td><b>After Effects</b></td><td>Build compositions, layers, keyframes and render queues</td><td>Allow scripts to write files in Preferences → Scripting &amp; Expressions</td></tr>
+  </table></div>
+
+  <h2>Office, CAD and streaming</h2>
+  <div class="table-wrap"><table>
+    <tr><th>App</th><th>What the AI can do</th><th>Setup</th></tr>
+    <tr><td><b>Excel</b></td><td>Fill sheets, write formulas, format and chart data in the open workbook</td><td>Just open Excel (save first, script changes can't be undone)</td></tr>
+    <tr><td><b>Word</b></td><td>Write, format and restructure documents</td><td>Just open Word</td></tr>
+    <tr><td><b>PowerPoint</b></td><td>Add slides, titles, text and layouts</td><td>Just open PowerPoint (save first)</td></tr>
+    <tr><td><b>AutoCAD</b></td><td>Draw lines, circles and text, and send commands to the open drawing</td><td>Open AutoCAD with a drawing</td></tr>
+    <tr><td><b>OBS Studio</b></td><td>Switch scenes, mute sources, start and stop recording or streaming</td><td>Turn on the WebSocket server in OBS and paste its password into Homebox</td></tr>
+  </table></div>
+
+  <h2>How app connections stay safe</h2>
+  <p>For 3D apps, Homebox uses a tiny bridge script that runs inside the app. It only accepts connections from your own computer, and only with a secret key that Homebox keeps in your user folder. Adobe and Office apps are reached through Windows' own automation system, and only while they are open. OBS uses its built-in, password-protected WebSocket server.</p>
+  <p>App scripts are real code and can reach outside the sandbox folder. That's why each app starts turned off and each step asks for approval by default. <a href="safety.html">Read more about safety</a>.</p>
+  <p>Step-by-step walkthroughs: <a href="guides/blender-with-ai.html">Blender</a> · <a href="guides/maya-with-ai.html">Maya</a> · <a href="guides/excel-with-ai.html">Excel</a> · <a href="guides/obs-with-ai.html">OBS</a>.</p>
+</div>

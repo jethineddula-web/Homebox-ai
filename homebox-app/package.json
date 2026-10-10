@@ -1,0 +1,73 @@
+{
+  "name": "homebox",
+  "productName": "Homebox",
+  "version": "2.1.0",
+  "description": "Let AI from any chat website work in your folders and creative apps — you approve every step.",
+  "author": "Jethin Production",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "server": "node src/core/server.js",
+    "check": "node scripts/check.js",
+    "dist": "npm run check && electron-builder --win nsis --publish never"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.jethinproduction.homebox",
+    "productName": "Homebox",
+    "copyright": "© Jethin Production",
+    "files": [
+      "src/**/*",
+      "bridges/**/*",
+      "extension/**/*",
+      "vscode/**/*",
+      "assets/**/*",
+      "package.json",
+      "LICENSE.txt",
+      "!node_modules/pdfjs-dist/{build,web,types,image_decoders,wasm,iccs}/**",
+      "!node_modules/pdfjs-dist/legacy/{web,image_decoders}/**",
+      "!node_modules/pdfjs-dist/legacy/build/{pdf.mjs,pdf.worker.mjs,pdf.sandbox.mjs,pdf.sandbox.min.mjs,*.map,*.d.mts}",
+      "!node_modules/pdfjs-dist/webpack.mjs",
+      "!node_modules/@napi-rs/**"
+    ],
+    "asarUnpack": [
+      "bridges/**/*",
+      "extension/**/*",
+      "node_modules/pdfjs-dist/**"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon-256.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Homebox",
+      "artifactName": "Homebox-Setup-${version}.${ext}",
+      "license": "LICENSE.txt"
+    },
+    "electronFuses": {
+      "runAsNode": false,
+      "enableCookieEncryption": true,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true,
+      "grantFileProtocolExtraPrivileges": false
+    }
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.3.289"
+  }
+}

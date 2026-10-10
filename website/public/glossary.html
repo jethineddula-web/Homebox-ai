@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary · Homebox</title>
+<meta name="description" content="Plain-language explanations of the terms used with Homebox and AI tools: sandbox, approvals, full access, MCP, bridge, ExtendScript, prompt injection and more.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/glossary.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Glossary · Homebox">
+<meta property="og:description" content="Plain-language explanations of the terms used with Homebox and AI tools: sandbox, approvals, full access, MCP, bridge, ExtendScript, prompt injection and more.">
+<meta property="og:url" content="https://www.example.com/glossary.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/home.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="index.html"><img src="assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="features.html">Features</a><a href="apps.html">Apps</a><a href="guide.html">How to use</a><a href="guides/index.html">Guides</a><a href="faq.html">FAQ</a><a class="btn primary small" href="download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap narrow page-hd">
+  <h1>Glossary</h1>
+  <p>Short, plain explanations of the words you'll meet when using Homebox and AI tools.</p>
+</div>
+<div class="wrap narrow article">
+  <dl class="glossary">
+    <dt id="action-block">Action block (homebox block)</dt>
+    <dd>A fenced code block marked <code>homebox</code> in which the AI writes what it wants to do, for example <code>write_file index.html</code> followed by the file's content. Homebox finds these blocks on the chat page, runs them (with your approval) and sends the results back.</dd>
+
+    <dt id="approval">Approval</dt>
+    <dd>A request from the AI to do something that changes your computer. Homebox shows the full content or code first; you approve or deny. Ignored requests are denied after five minutes.</dd>
+
+    <dt id="auto-run">Auto-run</dt>
+    <dd>The switch called <b>Let the AI keep working by itself</b> in the Homebox panel on the chat page. When on (the default), Homebox runs the AI's action blocks as soon as the answer is finished and sends the results back automatically.</dd>
+
+    <dt id="bridge">Bridge</dt>
+    <dd>A small Homebox script that runs inside an app such as Maya, Blender or Houdini, so Homebox can send it steps. It only accepts connections from your own computer, and only with Homebox's secret key.</dd>
+
+    <dt id="extendscript">ExtendScript</dt>
+    <dd>Adobe's scripting language for Photoshop, Illustrator and After Effects. It's an older version of JavaScript, so modern features like arrow functions don't work.</dd>
+
+    <dt id="full-access">Full access</dt>
+    <dd>A Homebox setting that lets the AI run everything you've allowed without asking first. Things set to Off stay off, and Pause still stops everything. See <a href="guides/approvals-or-full-access.html">Approvals or Full access</a>.</dd>
+
+    <dt id="localhost">Localhost (127.0.0.1)</dt>
+    <dd>The network address that means "this computer". Homebox only listens on it, so other devices and the internet can't reach it.</dd>
+
+    <dt id="mcp">MCP (Model Context Protocol)</dt>
+    <dd>An open standard that lets AI apps use tools. Apps such as Claude Desktop, Cursor and VS Code can connect to Homebox's private MCP link and use its tools without the browser extension.</dd>
+
+    <dt id="pairing">Pairing</dt>
+    <dd>Connecting a browser to Homebox. The extension shows a four-digit code, and you approve the same code in Homebox. Only paired browsers can send actions.</dd>
+
+    <dt id="pause">Pause</dt>
+    <dd>The emergency stop in Homebox's sidebar. It cuts off all AI access at once and denies anything waiting, until you resume.</dd>
+
+    <dt id="prompt-injection">Prompt injection</dt>
+    <dd>Instructions hidden in text the AI reads, such as a file or web page, that try to make it do something you didn't ask for. See <a href="guides/prompt-injection-explained.html">Prompt injection explained</a>.</dd>
+
+    <dt id="sandbox">Sandbox folder</dt>
+    <dd>The one folder the AI may work in. File tools can't reach anything outside it, and secret files inside it stay hidden.</dd>
+
+    <dt id="starter-prompt">Starter prompt</dt>
+    <dd>The instructions Homebox sends the AI with your first task: how to write action blocks, which tools it may use and the rules to follow. The Homebox button sends it for you.</dd>
+
+    <dt id="undo">Undo</dt>
+    <dd>Homebox backs up files before the AI changes or deletes them; the Undo button on the Activity page restores them. Inside 3D apps, each AI step is also one normal undo step.</dd>
+
+    <dt id="vsix">VSIX</dt>
+    <dd>The package format for VS Code extensions. Homebox builds its VS Code extension as a VSIX and installs it with VS Code's own installer.</dd>
+  </dl>
+</div>
+
+
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="download.html">Download</a><a href="features.html">Features</a><a href="apps.html">Supported apps</a><a href="safety.html">Safety</a><a href="changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="guide.html">How to use</a><a href="guides/index.html">Guides</a><a href="faq.html">FAQ</a><a href="troubleshooting.html">Troubleshooting</a><a href="glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="disclaimer.html">Disclaimer</a><a href="cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

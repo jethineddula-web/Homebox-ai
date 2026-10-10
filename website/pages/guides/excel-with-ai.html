@@ -1,0 +1,66 @@
+<!-- title: Automate Excel with AI -->
+<!-- description: Let an AI clean data, add formulas and build a summary sheet in your open Excel workbook through Homebox, and keep your data safe while it works. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: Office -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Automate Excel with AI</h1>{{articleMeta}}</div>
+
+  <p>Homebox connects to the Excel window you already have open. The AI writes short PowerShell scripts that use Excel's own automation interface, so it can read cells, write formulas, format ranges and add charts, exactly as if you'd done it by hand.</p>
+
+  <div class="callout warn"><p><b>Save first.</b> Excel cannot undo changes made by scripts. Save your workbook (or work on a copy) before letting AI change it.</p></div>
+
+  <h2>1. Turn on Excel</h2>
+  <ol>
+    <li>Open your workbook in Excel.</li>
+    <li>In Homebox, go to <b>Apps → Excel</b>, turn on <b>Let AI control Excel</b> and click <b>Test connection</b>. It should show Excel's version.</li>
+    <li>Start a <b>new chat</b> so the AI learns about the Excel tool.</li>
+  </ol>
+
+  <h2>2. Let the AI look first</h2>
+  <p>Good results start with the AI understanding your data. Ask:</p>
+  <pre>In Excel, look at the active sheet: list the column headers,
+the number of rows, and 5 sample rows. Don't change anything yet.</pre>
+
+  <h2>3. Clean and calculate</h2>
+  <p>Now give it the job, with clear rules:</p>
+  <pre>Clean the sheet: trim spaces in column B, make dates in column C
+real dates, remove fully empty rows. Then add column F "Total"
+= Quantity * Price as a formula, formatted as currency.</pre>
+  <p>Each step shows its script for approval. Scripts use <code>$excel</code>, which Homebox connects to your open Excel, for example <code>$ws.Range("F2").Formula = "=D2*E2"</code>. Formulas are better than pasted values, because they keep working when data changes.</p>
+
+  <h2>4. Build a summary</h2>
+  <pre>Add a new sheet "Summary" with total sales per month and per
+product using SUMIFS, and a clustered column chart of monthly totals.</pre>
+
+  <h2>Word and PowerPoint work the same way</h2>
+  <p>Turn on Word or PowerPoint in Homebox → Apps. The AI gets <code>$word</code> or <code>$ppt</code>. In Word, each AI step is one Undo. In PowerPoint, save first, as with Excel.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Excel is not open"</b>: open the workbook, then approve the step again.</li>
+    <li><b>"Could not reach Excel"</b>: a cell is probably in edit mode or a dialog is open. Press Esc in Excel and retry.</li>
+    <li><b>Formulas show as text</b>: ask the AI to set <code>.Formula</code> rather than <code>.Value2</code> for those cells.</li>
+  </ul>
+
+  <h2>Formulas the AI uses most</h2>
+  <p>It helps to recognise the formulas you'll see in the approval cards:</p>
+  <div class="table-wrap"><table>
+    <tr><th>Formula</th><th>What it does</th></tr>
+    <tr><td><code>SUMIFS</code></td><td>Adds up values that match one or more conditions, such as all sales for one product in one month.</td></tr>
+    <tr><td><code>XLOOKUP</code></td><td>Finds a value in one column and returns the matching value from another. It's the modern replacement for VLOOKUP.</td></tr>
+    <tr><td><code>IFERROR</code></td><td>Shows something friendlier, such as a blank, when a formula would give an error.</td></tr>
+    <tr><td><code>TEXT</code></td><td>Formats numbers and dates as text, for example <code>TEXT(A2,"mmm yyyy")</code>.</td></tr>
+    <tr><td><code>UNIQUE</code> / <code>SORT</code></td><td>Builds a list of distinct values, sorted, which is handy for summary tables.</td></tr>
+  </table></div>
+  <p>If a formula looks unfamiliar, ask the AI: "Explain the formula in F2 in plain words." Understanding the formulas means you can trust, and fix, the sheet later.</p>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Highlight every row where the total is above 1,000 in light green."</i></li>
+    <li><i>"Add a column with the month name from the date in column C."</i></li>
+    <li><i>"Find duplicate customer names and list them on a new sheet. Don't delete anything."</i></li>
+    <li><i>"Freeze the header row and make the columns fit their contents."</i></li>
+  </ul>
+</div>

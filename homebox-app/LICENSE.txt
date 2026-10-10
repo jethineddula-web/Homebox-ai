@@ -1,0 +1,38 @@
+HOMEBOX END USER LICENCE AGREEMENT
+
+Copyright (c) 2026 Jethin Production. All rights reserved.
+
+Please read this agreement before installing Homebox. By clicking "I Agree", installing or using Homebox (the app, its browser extension, its VS Code extension and its app bridges), you accept these terms. If you don't accept them, click "Cancel" and don't use Homebox.
+
+1. LICENCE
+Jethin Production gives you a personal, non-exclusive, non-transferable, revocable licence to install and use Homebox. You may not sell, rent or redistribute Homebox, remove its notices, or reverse engineer it except where the law allows this despite this restriction.
+
+2. WHAT HOMEBOX DOES
+Homebox lets AI models that you choose read, create, change, move and delete files in a folder you pick, and, if you turn them on, run commands and control other programs on your computer. You choose the permissions, whether each action needs your approval, and whether to turn on Full access. You are responsible for the actions you approve or allow, for reviewing code before it runs, and for keeping backups of important files.
+
+3. THIRD-PARTY SERVICES
+Homebox works with AI services and programs made by others. Jethin Production is not affiliated with or endorsed by any of them, and all trademarks belong to their owners. You must follow the terms of every service you use with Homebox. Some AI services do not allow their websites to be used through automated tools. Check each service's terms first, and do not use Homebox with a service whose terms don't allow it. We are not responsible for any action a third party takes against your account.
+
+4. ACCEPTABLE USE
+Do not use Homebox to break the law or anyone's rights, to access systems or data you are not allowed to access, to create or spread malware, or to get around the security or usage limits of any service.
+
+5. AI OUTPUT
+AI models can be wrong, incomplete or unsafe. Homebox does not check that AI-generated content, code or actions are correct, secure, lawful or suitable for your purpose.
+
+6. NO WARRANTY
+HOMEBOX IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. Undo, approvals and the AI folder reduce risk but cannot remove it.
+
+7. LIMITATION OF LIABILITY
+TO THE FULLEST EXTENT THE LAW ALLOWS, JETHIN PRODUCTION IS NOT LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF DATA, FILES, PROFITS, REVENUE OR BUSINESS, ARISING FROM HOMEBOX OR FROM ACTIONS PERFORMED THROUGH IT. OUR TOTAL LIABILITY FOR ANY CLAIM IS LIMITED TO THE GREATER OF THE AMOUNT YOU PAID US FOR HOMEBOX IN THE TWELVE MONTHS BEFORE THE CLAIM, OR US$50. Some places do not allow some of these limits, so they may not all apply to you.
+
+8. INDEMNITY
+You agree to cover claims, costs and damages, including reasonable legal fees, that arise from your use of Homebox in breach of this agreement, the law, or a third-party service's terms.
+
+9. TERMINATION
+You may stop using Homebox at any time by uninstalling it. This licence ends automatically if you break this agreement. Sections 2 to 8 continue after it ends.
+
+10. OPEN-SOURCE COMPONENTS
+Homebox includes open-source software, including Electron and Chromium, under their own licences. Their notices are in the LICENSE.electron.txt and LICENSES.chromium.html files in the Homebox install folder.
+
+11. FULL TERMS
+The full terms of use, including governing law, are at the Homebox website (Terms of use page). If this agreement and those terms conflict, the website terms apply.

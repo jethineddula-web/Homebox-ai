@@ -1,0 +1,104 @@
+<!-- title: How to use Homebox -->
+<!-- description: A complete, step-by-step guide to Homebox: connecting your browser, giving the AI tasks, approvals, auto-run, full access, undo, apps and keyboard shortcuts. -->
+<div class="wrap narrow page-hd">
+  <h1>How to use Homebox</h1>
+  <p>This guide covers everything from your first task to advanced settings. If you haven't installed Homebox yet, start with the <a href="download.html">download page</a>.</p>
+</div>
+<div class="wrap narrow article">
+  <nav class="toc" aria-label="On this page"><b>On this page</b><ol>
+    <li><a href="#window">The Homebox window</a></li>
+    <li><a href="#first-task">Your first task</a></li>
+    <li><a href="#while">While the AI works</a></li>
+    <li><a href="#approvals">Approvals and full access</a></li>
+    <li><a href="#folders">Choosing a sandbox folder</a></li>
+    <li><a href="#apps">Working in apps</a></li>
+    <li><a href="#undo">Undo, pause and history</a></li>
+    <li><a href="#other">Other ways to connect</a></li>
+    <li><a href="#tips">Tips for better results</a></li>
+    <li><a href="#keys">Keyboard shortcuts</a></li>
+  </ol></nav>
+
+  <h2 id="window">1. The Homebox window</h2>
+  <figure><img src="assets/screens/home.png" alt="The Homebox home screen with the What to do now card, status cards and recent activity" width="1280" height="800" loading="lazy"><figcaption>The home screen always shows your next step.</figcaption></figure>
+  <p>When Homebox is running, its control panel opens in your browser at <code>http://127.0.0.1:7777</code>. The first time, a short tour points out each part. You can replay it with the map button at the top right.</p>
+  <ul>
+    <li><b>Home</b> shows a <b>What to do now</b> card with your next step, a status summary and today's activity.</li>
+    <li><b>Approvals</b> lists actions waiting for your OK.</li>
+    <li><b>Activity</b> is the full history, with Undo buttons.</li>
+    <li><b>Folders</b> is where you pick the sandbox folder.</li>
+    <li><b>Connect AI</b> has the extension download, connected browsers, MCP and paste mode.</li>
+    <li><b>Apps</b> turns on Maya, Blender, Photoshop, Excel, OBS and the others.</li>
+    <li><b>Settings</b> holds permissions, Full access, theme and notifications.</li>
+  </ul>
+  <p>At the bottom of the sidebar are the two most important switches: <b>Full access</b> and the <b>AI access</b> pause button.</p>
+
+  <h2 id="first-task">2. Your first task</h2>
+  <ol class="steps">
+    <li><b>Open a new chat</b>Go to ChatGPT, Claude, Gemini or another supported site and start a fresh conversation. On Arena, use Direct Chat.</li>
+    <li><b>Click the round Homebox button</b>It sits at the bottom right of the page. Drag it up or down if it covers something. You can also press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>.</li>
+    <li><b>Type your task in box 1</b>The panel has three numbered boxes. In box <b>1</b>, type what you want, for example "Create a simple portfolio website". Or click one of the <b>Ideas</b>.</li>
+    <li><b>Add pictures in box 2 (optional)</b>Drag pictures or files into box <b>2</b>, or paste a picture into box 1. Homebox saves them in your AI folder (in <code>pictures</code> or <code>files</code>) and can also show the pictures to the AI.</li>
+    <li><b>Click Start task</b>Box <b>3</b>. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> also works.</li>
+    <li><b>Let it run</b>The switch <b>Let the AI keep working by itself</b> (also called Auto-run) is on by default. Homebox runs each step and sends the results back until the AI says DONE.</li>
+  </ol>
+  <div class="callout warn"><p><b>Always start from the Homebox button,</b> not the chat's own message box. The button sends the AI its instructions and tool list together with your task. If you type directly into the chat, the AI doesn't know Homebox exists and will just give you code to copy.</p></div>
+
+  <h2 id="while">3. While the AI works</h2>
+  <p>The Homebox panel on the chat page shows what is happening in real time:</p>
+  <ul>
+    <li><b>AI is working…</b> on the round button means a step is running.</li>
+    <li><b>Needs your OK</b> means a step is waiting for you. The panel opens by itself and shows the code.</li>
+    <li><b>Steps the AI wrote</b> lists every step, with a Run button for any that haven't run.</li>
+    <li><b>What Homebox sent back to the AI</b> holds the last results. Use <b>Put in chat box</b> if a result ever fails to send.</li>
+  </ul>
+  <p>Homebox stops by itself after 30 rounds (you can change the round limit in Settings, with advanced options shown) and whenever you press <b>Stop the AI</b>. Turn the switch off if you prefer to press Run on each step yourself.</p>
+
+  <h2 id="approvals">4. Approvals and full access</h2>
+  <figure><img src="assets/screens/approvals.png" alt="The Approvals page showing a file the AI wants to create, with Approve and Deny buttons and a countdown" width="1280" height="800" loading="lazy"><figcaption>Read what the AI wants to do, then approve with Enter or deny with Esc.</figcaption></figure>
+  <p>By default the AI may read files on its own, but must ask before changing files. Commands and apps are off until you turn them on, and then every step asks first. Each approval card shows exactly what will be written or run.</p>
+  <p>If you trust a task and don't want to click Approve every time, turn on <b>Full access</b> in the sidebar or in Settings. From then on, everything you have turned on runs without asking, including anything already waiting. Things set to <b>Off</b> stay off. A banner reminds you that Full access is on, and one click turns it off.</p>
+  <div class="callout warn"><p>Use Full access only with tasks you understand. Commands and app scripts can reach outside the sandbox folder. The safe middle ground is to leave commands off and allow only file changes.</p></div>
+
+  <h2 id="folders">5. Choosing a sandbox folder</h2>
+  <p>The sandbox is the only folder the AI can see. It starts as <b>Homebox Workspace</b> in your user folder. On the Folders page, click <b>Choose folder…</b> or type a path to use a project folder instead. Keep several folders in the list and switch with one click. Homebox refuses your whole user folder and Windows system folders for safety.</p>
+
+  <h2 id="apps">6. Working in apps</h2>
+  <figure><img src="assets/screens/apps.png" alt="The Apps page in Homebox listing Maya, Blender, Houdini, Photoshop, Excel, VS Code and other apps with on/off switches" width="1280" height="800" loading="lazy"><figcaption>Each app is off until you switch it on.</figcaption></figure>
+  <p>Open the <b>Apps</b> page and click an app. Each one explains its own setup. Most take one step:</p>
+  <ul>
+    <li><b>3D apps</b> (Blender, Houdini, 3ds Max, Nuke, Unreal): paste one line into the app's Python console, or turn on <b>Start automatically</b>.</li>
+    <li><b>Adobe and Office apps</b>: just open the app. Homebox talks to it through Windows.</li>
+    <li><b>OBS Studio</b>: turn on the WebSocket server in OBS and paste its password into Homebox.</li>
+  </ul>
+  <p>Click <b>Test connection</b> to check, then start a <b>new chat</b> so the AI learns about the app. There is a separate guide for each popular app in <a href="guides/index.html">Guides</a>.</p>
+
+  <h2 id="undo">7. Undo, pause and history</h2>
+  <p>Every file change is backed up before it happens. On the Activity page, click <b>Undo</b> next to any change to put the old version back. In Maya, Blender, Houdini, 3ds Max, Nuke, Unreal, Word and AutoCAD, each AI step is also one normal undo step inside the app. Excel and PowerPoint can't undo script changes, so save your file first.</p>
+  <p>Press <b>AI access on</b> at the bottom of the sidebar (or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>) to pause everything instantly. The full log is kept in <code>.homebox\audit.jsonl</code> in your user folder.</p>
+
+  <h2 id="other">8. Other ways to connect</h2>
+  <p><b>MCP apps.</b> Claude Desktop, Cursor, VS Code and other MCP clients can connect to the private link on Connect AI → MCP apps. Keep the link secret. You can make a new one at any time.</p>
+  <p><b>Paste mode.</b> Works with any chatbot. Copy the starter prompt into the chat and add your task. Paste the AI's reply into Connect AI → Paste a reply and click Run blocks, then copy the results back.</p>
+
+  <h2 id="tips">9. Tips for better results</h2>
+  <ul>
+    <li>Describe the result you want, not the steps: "a landing page for my bakery with a menu section" works better than "write HTML".</li>
+    <li>Start a new chat after changing permissions or turning on an app.</li>
+    <li>For 3D work, remind the AI that it can't see the viewport, and tell it what looks wrong ("the arms are too long").</li>
+    <li>Ask the AI to explain its plan first on big tasks. You can approve the plan before any files change.</li>
+    <li>If the AI stops using Homebox, say: "Use homebox blocks, as in my first message."</li>
+  </ul>
+
+  <h2 id="keys">10. Keyboard shortcuts</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Keys</th><th>What it does</th></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>Search pages, apps, settings and help</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>1</kbd> … <kbd>8</kbd></td><td>Go to a page</td></tr>
+    <tr><td><kbd>Enter</kbd> / <kbd>Esc</kbd></td><td>Approve / deny the top request (Approvals page)</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd></td><td>Pause or resume all AI access</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd></td><td>Switch light / dark theme</td></tr>
+    <tr><td><kbd>F1</kbd></td><td>Help</td></tr>
+    <tr><td><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd></td><td>Show or hide the Homebox panel on a chat page</td></tr>
+  </table></div>
+  <p>Still stuck? See <a href="troubleshooting.html">Troubleshooting</a> or the <a href="faq.html">FAQ</a>.</p>
+</div>

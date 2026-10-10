@@ -4,42 +4,159 @@
 <meta charset="utf-8">
 <title>Homebox</title>
 <style>
-:root{--bg:#fff;--ink:#1c1b19;--muted:#6a675f;--line:#e3e0d7;--soft:#f3f1ea;--accent:#2e6b5a;--ai:#fff;--bad:#a3322a}
-@media (prefers-color-scheme:dark){:root{--bg:#1d1c1a;--ink:#ecebe5;--muted:#9d998f;--line:#34332f;--soft:#262522;--accent:#62b39b;--ai:#0d1a16;--bad:#f2837a}}
+:root{--bg:#fff;--panel:#fff;--soft:#f3f1ea;--soft2:#e9e6dc;--ink:#1c1b19;--ink2:#3b3934;--muted:#6a675f;--line:#e3e0d7;--line2:#d4d0c4;--accent:#2e6b5a;--accent2:#3f8a74;--accent-soft:#e3efe9;--ai:#fff;--bad:#a3322a;--bad-soft:#fbe9e7;--warn:#a8511c;--warn-soft:#fcf0e6;--ok:#2fa37e;--ease:cubic-bezier(.2,.8,.2,1)}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1c1a;--panel:#1d1c1a;--soft:#262522;--soft2:#2f2e2a;--ink:#ecebe5;--ink2:#cfcdc5;--muted:#9d998f;--line:#34332f;--line2:#45433e;--accent:#62b39b;--accent2:#7cc7af;--accent-soft:#1d302a;--ai:#0d1a16;--bad:#f2837a;--bad-soft:#3a1f1c;--warn:#f0a36e;--warn-soft:#35251a;--ok:#4cc59c}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}
 *{box-sizing:border-box}
-body{margin:0;width:340px;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-body.welcome{width:auto;max-width:620px;margin:40px auto;padding:0 16px}
-.hd{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.hd img{width:28px;height:28px;border-radius:7px}
-.hd b{font-size:16px}
-.bd{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
-.btn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:9px;padding:8px 12px;font:inherit;font-size:13.5px;cursor:pointer;width:100%}
+html{overflow-x:hidden}
+body{margin:0;width:360px;background:var(--bg);color:var(--ink);font:13.5px/1.5 "Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+body.welcome{width:auto;max-width:640px;margin:40px auto;padding:0 16px}
+body.welcome .shell{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hd{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.hd img{width:30px;height:30px;border-radius:8px;transition:transform .4s var(--ease)}
+.hd:hover img{transform:rotate(-8deg) scale(1.05)}
+.hd .t{flex:1;line-height:1.2}
+.hd b{font-size:15.5px;letter-spacing:-.01em}
+.hd small{display:block;color:var(--muted);font-size:11.5px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px 3px 8px;font-size:12px;font-weight:600;background:var(--soft);color:var(--muted);transition:background .3s,color .3s}
+.chip.on{background:var(--accent-soft);color:var(--accent)}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.chip.on .dot{animation:ping 2.4s infinite}
+.icon-btn{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:9px;cursor:pointer;transition:border-color .2s,transform .12s}
+.icon-btn:hover{border-color:var(--line2)}.icon-btn:active{transform:scale(.93)}
+.tabs{position:relative;display:flex;padding:0 12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;border:0;background:none;font:inherit;font-weight:600;color:var(--muted);padding:9px 0 10px;cursor:pointer;transition:color .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--accent)}
+.tabs .ind{position:absolute;bottom:-1px;left:0;height:2px;border-radius:2px;background:var(--accent);transition:transform .35s var(--ease),width .35s var(--ease)}
+.pane{padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px;animation:fadeUp .3s var(--ease)}
+.card{background:var(--soft);border-radius:12px;padding:12px 14px;animation:fadeUp .35s var(--ease) both}
+.card.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:18px 14px}
+.card.hero .art{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--panel);color:var(--accent);margin-bottom:4px;animation:float 4s ease-in-out infinite}
+.card.hero .art svg{width:24px;height:24px}
+.card.hero.bad .art{color:var(--bad)}
+.card.hero b{font-size:14.5px}
+.btn{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line2);background:var(--panel);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-weight:500;cursor:pointer;width:100%;transition:background .2s,border-color .2s,transform .12s}
+.btn:hover{background:var(--soft)}.btn:active{transform:scale(.97)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--ai);font-weight:600}
+.btn.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+.btn.busy{pointer-events:none;opacity:.7}
+.btn.busy::after{content:"";width:11px;height:11px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+.row{display:flex;gap:8px}
+.ask{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.ask textarea{width:100%;box-sizing:border-box;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--ink);padding:8px 10px;font:inherit;resize:vertical;min-height:62px}
+.ask textarea:focus,.ask select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.askopts{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.ask select,.prefs select{border:1px solid var(--line2);border-radius:8px;background:var(--panel);color:var(--ink);padding:4px 6px;font:inherit;font-size:12.5px;max-width:200px}
+.chk{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.chk input{accent-color:var(--accent);margin:0}
+.prefs summary{cursor:pointer;color:var(--muted)}
+.evw{display:flex;gap:12px;align-items:center;justify-content:space-between;cursor:pointer;margin-top:10px}.evw input{width:18px;height:18px;accent-color:var(--accent);flex:none}
+.prefs .pr{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.prefs .pr span{flex:1;min-width:0}.prefs select{max-width:140px;min-width:0}.ask{overflow:hidden}
+.prefs .skip{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px}
 .muted{color:var(--muted)}.small{font-size:12.5px}
-.status{display:flex;align-items:center;gap:8px;font-weight:600}
-.dot{width:9px;height:9px;border-radius:50%;background:#999}
-.dot.on{background:#2fa37e}.dot.bad{background:#d24a3f}
-.code{font:700 28px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;margin:4px 0}
-.box{background:var(--soft);border-radius:10px;padding:10px 12px}
-ol{margin:6px 0;padding-left:20px}
+.code{display:flex;gap:6px;justify-content:center;margin:8px 0 4px}
+.code span{width:40px;height:48px;display:grid;place-items:center;border-radius:10px;background:var(--panel);border:1px solid var(--line2);font:700 24px/1 ui-monospace,Consolas,monospace;color:var(--accent);animation:pop .45s var(--ease) both}
+.code span:nth-child(2){animation-delay:.06s}.code span:nth-child(3){animation-delay:.12s}.code span:nth-child(4){animation-delay:.18s}
+.wait{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:12.5px}
+.spinner{width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+.ws{display:flex;align-items:center;gap:12px}
+.ws .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--accent);color:var(--ai);flex:none}
+.ws .body{flex:1;min-width:0}
+.ws .body b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.perms{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.perm{font-size:11.5px;border-radius:999px;padding:2px 9px;background:var(--panel);border:1px solid var(--line);color:var(--ink2)}
+.perm i{font-style:normal;font-weight:600}
+.perm.auto i{color:var(--accent)}.perm.ask i{color:var(--warn)}.perm.off i{color:var(--muted)}
+.site{display:flex;align-items:center;gap:10px}
+.site img{width:18px;height:18px;border-radius:4px}
+.site .body{flex:1;min-width:0}
+.site .body b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.linkish{background:none;border:0;padding:0;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline}
+.ok-tag{display:inline-flex;align-items:center;gap:4px;color:var(--accent);font-weight:600;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);font:inherit;font-size:12px;font-weight:500;cursor:pointer;transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;animation:fadeUp .35s var(--ease) both}
+.tile:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.tile i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:13px;background:var(--accent-soft);color:var(--accent)}
+h4{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.steps li{counter-increment:s;display:flex;gap:10px}
+.steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:11.5px;font-weight:700;display:grid;place-items:center}
+details{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:9px 12px;font-weight:600;display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary svg{margin-left:auto;color:var(--muted);transition:transform .3s var(--ease)}
+details[open] summary svg{transform:rotate(90deg)}
+details p{margin:0;padding:0 12px 10px;color:var(--ink2);font-size:12.5px;animation:fadeUp .25s var(--ease)}
+kbd{font:11px ui-monospace,Consolas,monospace;background:var(--panel);border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:0 5px}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+.foot a{color:var(--muted);text-decoration:none;cursor:pointer}.foot a:hover{color:var(--accent)}
 .hidden{display:none!important}
+.skel{height:14px;border-radius:6px;background:linear-gradient(90deg,var(--soft) 0%,var(--soft2) 50%,var(--soft) 100%);background-size:200% 100%;animation:shimmer 1.2s linear infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}60%{transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(47,163,126,.5)}70%,100%{box-shadow:0 0 0 6px rgba(47,163,126,0)}}
 </style>
 </head>
 <body>
-<div class="hd"><img src="icons/icon48.png" alt=""><b>Homebox</b></div>
-<div class="bd">
-  <div id="welcome" class="hidden box">
-    <b>Welcome! Two quick steps:</b>
-    <ol class="small">
-      <li>Start the <b>Homebox app</b> on this computer (download it from the same place you got this extension).</li>
-      <li>Click <b>Connect</b> below and approve the code in the Homebox window.</li>
-    </ol>
-    <span class="small muted">Then open an AI chat site (LMArena, ChatGPT, Gemini, Claude, DeepSeek…) and click the Homebox button at the bottom right.</span>
+<div class="shell">
+  <div class="hd">
+    <img src="icons/icon48.png" alt="">
+    <div class="t"><b>Homebox</b><small id="sub">Let web AI work on your computer</small></div>
+    <span class="chip" id="chip"><span class="dot"></span><span id="chipText">Checking</span></span>
   </div>
-  <div class="status"><span class="dot" id="dot"></span><span id="statusText">Checking…</span></div>
-  <div id="body"></div>
-  <div id="siteBox" class="hidden box small"></div>
+  <div class="tabs" id="tabs">
+    <button data-tab="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+    <button data-tab="sites"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>AI sites</button>
+    <button data-tab="help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></svg>Help</button>
+    <span class="ind" id="ind"></span>
+  </div>
+
+  <div class="pane" data-pane="home">
+    <div id="ask" style="margin-bottom:10px"></div>
+    <div id="welcome" class="card hidden">
+      <b>Welcome! Two quick steps:</b>
+      <ol class="steps small" style="margin-top:10px">
+        <li><span>Start the <b>Homebox app</b> on this computer.</span></li>
+        <li><span>Click <b>Connect</b> below and approve the code in the Homebox window.</span></li>
+      </ol>
+    </div>
+    <div id="body"><div class="card"><div class="skel" style="width:60%"></div><div class="skel" style="width:90%;margin-top:10px"></div><div class="skel" style="width:40%;margin-top:10px"></div></div></div>
+    <div id="siteBox" class="hidden"></div>
+    <label class="card evw" id="evw"><span><b>Show the Homebox icon on every site</b><br><span class="small muted">A small icon on each page, to ask the AI from anywhere. The AI still only controls sites you allow.</span></span><input type="checkbox" id="evwOn"></label>
+  </div>
+
+  <div class="pane hidden" data-pane="sites">
+    <h4>Open an AI chat</h4>
+    <div class="grid" id="siteGrid"></div>
+    <p class="small muted" style="margin:0">Open a <b>new chat</b>, then click the round <b>Homebox</b> button at the bottom right. Using another site? Open it and enable Homebox from the Home tab.</p>
+  </div>
+
+  <div class="pane hidden" data-pane="help">
+    <h4>How it works</h4>
+    <ol class="steps">
+      <li><span>Open an AI chat site in a <b>new chat</b>.</span></li>
+      <li><span>Click the round <b>Homebox</b> button on the page (or press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd>).</span></li>
+      <li><span>Type what you want in box <b>1</b> and click <b>Start task</b>. Homebox keeps going by itself until the AI says <b>DONE</b>.</span></li>
+      <li><span>Approve or deny each change. The AI says <b>DONE</b> when finished.</span></li>
+    </ol>
+    <h4 style="margin-top:4px">Common problems</h4>
+    <details><summary>The AI just gives me code<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></summary><p>Start a new chat and use the Homebox button → <b>Start task</b> instead of typing into the chat box.</p></details>
+    <details><summary>Results didn't send<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></summary><p>They're in the chat's message box. Press Send yourself, or use <b>Put in chat box</b> in the page panel.</p></details>
+    <details><summary>"App isn't running"<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></summary><p>Start Homebox on this computer. This popup updates by itself.</p></details>
+    <details><summary>Changed a permission?<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></summary><p>Start a new chat so the AI learns its new tool list.</p></details>
+  </div>
+
+  <div class="foot"><span id="ver">Homebox extension</span><a id="openAppLink">Open Homebox app →</a></div>
 </div>
+<script src="router.js"></script>
+<script src="askbox.js"></script>
 <script src="popup.js"></script>
 </body>
 </html>

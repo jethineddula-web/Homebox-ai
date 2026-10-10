@@ -1,0 +1,35 @@
+<!-- title: Safety -->
+<!-- description: How Homebox keeps AI inside the limits you set: a sandbox folder, hidden secrets, approvals, local-only connections, backups and an emergency pause. -->
+<div class="wrap narrow page-hd">
+  <h1>How Homebox keeps you safe</h1>
+  <p>Letting an AI touch your computer should be a deliberate choice, with clear limits. Here is exactly what Homebox allows, what it blocks and what you should still watch out for.</p>
+</div>
+<div class="wrap narrow article">
+  <h2>What the AI can reach</h2>
+  <ul>
+    <li><b>Only the sandbox folder.</b> Every file path is checked. Paths that try to escape with <code>..</code>, shortcuts or links are refused.</li>
+    <li><b>Never your secrets.</b> Files such as <code>.env</code>, SSH keys and <code>.pem</code> or <code>.key</code> files are hidden even inside the sandbox.</li>
+    <li><b>Only what you turn on.</b> Commands and every app start switched off. When a permission is off, the AI isn't even told the tool exists.</li>
+    <li><b>Deletes can always be undone.</b> Before the AI deletes a file or folder, Homebox backs it up in full, and Undo puts it back. It refuses to delete the whole sandbox, folders holding secret files, and anything too large to back up.</li>
+  </ul>
+
+  <h2>Who can talk to Homebox</h2>
+  <p>Homebox listens only on <code>127.0.0.1</code>, the address that means "this computer". Other devices on your Wi-Fi or the internet cannot connect. Websites can't use it either: the browser extension must be approved with a four-digit code in the Homebox window, and Homebox rejects requests that come from ordinary web pages. App bridges use a secret key stored in your user folder.</p>
+
+  <h2>Approvals, full access and pause</h2>
+  <p>By default every change waits for you, showing the exact content or code. <b>Full access</b> removes those prompts for everything you have allowed. It's convenient, but it means the AI acts on its own, so turn it on only for tasks you trust and turn it off afterwards. The <b>pause</b> button stops all access instantly, denies anything waiting, and works whether or not Full access is on.</p>
+
+  <h2>Things to keep in mind</h2>
+  <div class="callout warn"><p><b>Read code before approving it,</b> especially commands and app scripts. These run with your Windows account's permissions and can reach outside the sandbox folder.</p></div>
+  <ul>
+    <li><b>Prompt injection.</b> Text inside a web page or file the AI reads can try to give it new instructions. Be extra careful approving actions right after the AI has read content you didn't write.</li>
+    <li><b>What you share with the AI company.</b> Anything the AI reads through Homebox is sent to that AI's provider, just like anything you paste into the chat. Don't keep private documents in the sandbox.</li>
+    <li><b>Backups still matter.</b> Homebox backs up files before changing them, but keep your own backups of important work, especially in apps like Excel and PowerPoint that cannot undo script changes.</li>
+  </ul>
+
+  <h2>What Homebox does not do</h2>
+  <p>Homebox has no account, sends no data to us, shows no ads inside the app and does not collect analytics. It stores its settings and activity log in the <code>.homebox</code> folder in your user folder, and nowhere else. See our <a href="privacy.html">privacy policy</a> for details about this website.</p>
+
+  <h2>Found a security problem?</h2>
+  <p>Please email <a href="mailto:{{contactEmail}}">{{contactEmail}}</a> with the details. We read every report and will credit you if you'd like.</p>
+</div>

@@ -1,0 +1,57 @@
+<!-- title: Build your first website with AI -->
+<!-- description: A beginner's walkthrough: use ChatGPT or Claude with Homebox to build a working multi-page website in an empty folder, then improve it with follow-up requests. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: Beginner -->
+<!-- image: screens/approvals.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Build your first website with AI</h1>{{articleMeta}}</div>
+
+  <p>This guide takes you from an empty folder to a small website you can open in your browser. You won't write any code. You'll describe what you want, watch the AI create the files, and ask for changes in plain English.</p>
+
+  <h2>Before you start</h2>
+  <ul>
+    <li>Homebox is running and your browser is connected (the extension icon shows <b>Connected</b>). If not, follow the <a href="../download.html">install steps</a>.</li>
+    <li>You have an account on an AI chat site. ChatGPT, Claude and Gemini all work well for this.</li>
+  </ul>
+
+  <h2>1. Make a fresh folder</h2>
+  <p>In the Homebox window, open <b>Folders</b>, type a path such as <code>C:\Users\you\Documents\my-first-site</code>, tick <b>Create if missing</b> and click <b>Add</b>. The new folder becomes the active sandbox. A clean folder makes it easy to see exactly what the AI creates.</p>
+
+  <h2>2. Start the task</h2>
+  <p>Open your AI site in a <b>new chat</b>, click the round Homebox button and type something like:</p>
+  <pre>Build a small website for a neighbourhood bakery called "Crumb &amp; Co".
+Pages: home, menu, about, contact. Share one style.css.
+Warm colours, big photos (use placeholder images), and a menu
+with prices. It must work by opening index.html directly.</pre>
+  <p>Press <b>Start task</b>. Homebox sends your request together with the instructions the AI needs.</p>
+
+  <h2>3. Watch the steps</h2>
+  <p>The AI usually starts by looking at the folder (<code>list_dir</code>), then writes files one at a time. Each <code>write_file</code> step shows up for approval in the Homebox panel and in the Homebox window, with the full file content. Skim it and click <b>Approve</b>. With <b>Let the AI keep working by itself</b> switched on (the default), Homebox sends each result straight back and the AI moves on.</p>
+  <div class="callout"><p>Want it hands-free? Turn on <b>Full access</b> in the Homebox sidebar. The AI will write the files without stopping. Turn it off again when the task is finished.</p></div>
+
+  <h2>4. Open your site</h2>
+  <p>When the AI says <b>DONE</b>, click <b>Open sandbox folder</b> on the Homebox home screen and double-click <code>index.html</code>. Your site opens in the browser.</p>
+
+  <h2>5. Improve it</h2>
+  <p>Keep chatting in the same conversation. Good follow-ups are specific:</p>
+  <ul>
+    <li>"Make the header stick to the top and shrink when scrolling."</li>
+    <li>"The menu prices don't line up. Use a two-column layout."</li>
+    <li>"Add a dark mode that follows the computer's setting."</li>
+  </ul>
+  <p>The AI reads its earlier files, edits only what's needed and reports back. If you don't like a change, open <b>Activity</b> and click <b>Undo</b> next to it.</p>
+
+  <h2>Common hiccups</h2>
+  <ul>
+    <li><b>The AI pasted code instead of creating files.</b> You typed into the chat directly. Use the Homebox button → Start task in a new chat.</li>
+    <li><b>It stopped after a few steps.</b> Reply "Continue with homebox blocks until the site is finished."</li>
+    <li><b>Images are missing.</b> The AI can't download images. Ask it to use placeholder services, or drop your own photos into the folder and tell it their names.</li>
+  </ul>
+
+  <h2>What's next</h2>
+  <p>Read <a href="writing-good-ai-tasks.html">How to write tasks AI can finish on its own</a> to get better results on bigger projects.</p>
+
+  <h2>Make it yours</h2>
+  <p>Once the basics work, add your own material. Copy your photos into an <code>images</code> folder in the sandbox, then ask: <i>"Use the photos in the images folder on the menu page, with short captions."</i> The AI can see the file names, so naming them clearly (<code>croissant.jpg</code> rather than <code>IMG_2041.jpg</code>) gives better results.</p>
+</div>

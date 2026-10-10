@@ -1,0 +1,52 @@
+<!-- title: Model a scene in Blender with AI -->
+<!-- description: Connect Blender to Homebox and let an AI chat build a low-poly scene with bpy, one undoable step at a time, then refine it with feedback. -->
+<!-- type: article -->
+<!-- published: 2026-09-30 -->
+<!-- category: 3D -->
+<!-- image: screens/apps.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Model a scene in Blender with AI</h1>{{articleMeta}}</div>
+
+  <p>Blender's Python API (<code>bpy</code>) can do almost anything you can do with the mouse. AI models know it well, but writing it by hand is slow. With Homebox, the AI runs its own scripts inside your open Blender, and each step is a single Ctrl+Z if you don't like it.</p>
+
+  <h2>1. Connect Blender (once)</h2>
+  <ol>
+    <li>In the Homebox window, open <b>Apps → Blender</b> and switch <b>Let AI control Blender</b> on.</li>
+    <li>In Blender, switch to the <b>Scripting</b> workspace. In the Python Console, paste the line shown in Homebox and press Enter. You'll see <i>Homebox: Blender is listening on port 7010</i>.</li>
+    <li>Back in Homebox, click <b>Test connection</b>. It should show your Blender version.</li>
+    <li>To skip step 2 next time, turn on <b>Start automatically</b>. Homebox adds its bridge to Blender's startup scripts.</li>
+  </ol>
+
+  <h2>2. Ask for a scene</h2>
+  <p>Start a <b>new chat</b> (so the AI learns about the Blender tool), open the Homebox panel and try:</p>
+  <pre>In Blender, build a low-poly campsite: a tent, a campfire with
+stones around it, three pine trees and a log to sit on.
+Name every object clearly, put them in a collection called
+"Campsite", keep everything within 10 m of the origin.
+After each object, print its location and dimensions.</pre>
+
+  <h2>3. What happens next</h2>
+  <p>The AI works in small steps: first it clears or inspects the scene, then adds objects one at a time with <code>bpy.ops.mesh.primitive_*</code> or builds meshes from data. Each step appears in Homebox for approval with the full Python code. After it runs, the printed locations come back to the AI, so it can space objects sensibly without seeing the viewport.</p>
+  <div class="callout"><p><b>Tip:</b> ask for materials in a separate step ("now give each object a simple coloured material"). Small steps are easier to check and to undo.</p></div>
+
+  <h2>4. Give visual feedback</h2>
+  <p>The AI can't see your viewport, so be concrete: "the tent is sinking into the ground by about half its height", "the trees are too uniform, vary their scale between 0.8 and 1.3". It will read the scene, adjust and report the new numbers.</p>
+
+  <h2>5. Save your work</h2>
+  <p>Ask: "Save the file as <code>campsite.blend</code> in the sandbox folder." The AI uses <code>SANDBOX</code>, a variable Homebox provides that points to your sandbox folder.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Blender is not listening"</b>: the bridge isn't running. Paste the setup line again or restart Blender with Start automatically on.</li>
+    <li><b>An operator fails with a context error</b>: tell the AI "use bpy.data instead of bpy.ops for that step". Data-API code doesn't depend on which window is active.</li>
+    <li><b>A step takes very long</b>: heavy modifiers or subdivision can be slow. Ask for lower detail while blocking out.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a sun light and a camera framing the whole campsite, then render a preview to the sandbox as preview.png."</i></li>
+    <li><i>"Turn the tent into a low-poly shape with flat shading and a red material."</i></li>
+    <li><i>"Scatter 30 small grass clumps randomly around the campfire, avoiding the tent."</i></li>
+    <li><i>"List every object with its dimensions so I can check the scale."</i></li>
+  </ul>
+</div>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control OBS Studio with AI · Homebox</title>
+<meta name="description" content="Turn on OBS Studio's WebSocket server, connect it to Homebox, and let an AI switch scenes, mute sources and start recording on request.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/obs-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Control OBS Studio with AI · Homebox">
+<meta property="og:description" content="Turn on OBS Studio's WebSocket server, connect it to Homebox, and let an AI switch scenes, mute sources and start recording on request.">
+<meta property="og:url" content="https://www.example.com/guides/obs-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-09-30">
+<meta property="article:modified_time" content="2026-09-30">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Control OBS Studio with AI","description":"Turn on OBS Studio's WebSocket server, connect it to Homebox, and let an AI switch scenes, mute sources and start recording on request.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-09-30","dateModified":"2026-09-30","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/obs-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Control OBS Studio with AI","item":"https://www.example.com/guides/obs-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Control OBS Studio with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Control OBS Studio with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 30 September 2026 · 2 min read</p></div>
+
+  <p>OBS Studio has a built-in remote control called obs-websocket. Homebox uses it to let an AI send OBS requests, such as "switch to the Gameplay scene" or "start recording", with your approval.</p>
+
+  <h2>1. Turn on the WebSocket server in OBS</h2>
+  <ol>
+    <li>In OBS, open <b>Tools → WebSocket Server Settings</b>.</li>
+    <li>Tick <b>Enable WebSocket server</b>. Leave the port at 4455 unless you changed it.</li>
+    <li>Keep <b>Enable Authentication</b> on and click <b>Show Connect Info</b> to see the password.</li>
+  </ol>
+
+  <h2>2. Connect Homebox</h2>
+  <ol>
+    <li>In Homebox, open <b>Apps → OBS Studio</b> and turn it on.</li>
+    <li>Paste the password into the box, check the port and click <b>Save</b>. Homebox tests the connection straight away.</li>
+    <li>Start a <b>new chat</b> so the AI learns about the OBS tool.</li>
+  </ol>
+
+  <h2>3. Things to ask</h2>
+  <ul>
+    <li>"List my OBS scenes and sources." (uses <code>GetSceneList</code> and <code>GetInputList</code>)</li>
+    <li>"Switch to the Just Chatting scene." (<code>SetCurrentProgramScene</code>)</li>
+    <li>"Mute the Mic/Aux input." (<code>SetInputMute</code>)</li>
+    <li>"Start recording, and stop it in the next step when I say so." (<code>StartRecord</code> / <code>StopRecord</code>)</li>
+    <li>"Create a new scene called Break with a text source that says Back soon."</li>
+  </ul>
+  <p>Each request appears in Homebox with its data for approval. Results come back as JSON, so the AI can see scene names and states.</p>
+
+  <div class="callout warn"><p>Requests can change what you stream or record. Keep approvals on while you're live, and use Full access only for setup work off-stream.</p></div>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"OBS is not reachable"</b>: OBS is closed or the WebSocket server is off.</li>
+    <li><b>"OBS rejected the password"</b>: copy it again from Show Connect Info. It changes if you click Generate Password.</li>
+    <li><b>"OBS error 600"</b> or similar: the scene or input name doesn't exist. Ask the AI to list scenes first.</li>
+  </ul>
+
+  <h2>Example: a "be right back" routine</h2>
+  <p>Once OBS is connected, one sentence can replace several clicks:</p>
+  <pre>In OBS: switch to the "Be right back" scene, mute Mic/Aux,
+and pause the recording. When I say "back", do the reverse.</pre>
+  <p>The AI turns this into a short series of requests: <code>SetCurrentProgramScene</code>, <code>SetInputMute</code> and <code>PauseRecord</code>. Each appears in Homebox for approval, with its exact data.</p>
+
+  <h2>Useful request names</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Request</th><th>What it does</th></tr>
+    <tr><td><code>GetSceneList</code></td><td>Lists your scenes and shows which one is live.</td></tr>
+    <tr><td><code>SetCurrentProgramScene</code></td><td>Switches the live scene.</td></tr>
+    <tr><td><code>GetInputList</code></td><td>Lists your sources (inputs), such as microphones and cameras.</td></tr>
+    <tr><td><code>SetInputMute</code></td><td>Mutes or unmutes a source.</td></tr>
+    <tr><td><code>StartRecord</code> / <code>StopRecord</code> / <code>PauseRecord</code></td><td>Controls recording.</td></tr>
+    <tr><td><code>StartStream</code> / <code>StopStream</code></td><td>Controls streaming. Approve these with care.</td></tr>
+    <tr><td><code>SetSceneItemEnabled</code></td><td>Shows or hides a source inside a scene.</td></tr>
+  </table></div>
+  <p>The AI knows these names, but you can ask it to "list scenes and sources first" so it uses your exact names.</p>
+
+  <h2>Staying safe while you are live</h2>
+  <p>OBS requests take effect immediately, and some can't be taken back: once a stream has started, viewers have seen it. A few habits help:</p>
+  <ul>
+    <li><b>Keep approvals on while live.</b> Full access is fine for building scenes before a stream, but not during one.</li>
+    <li><b>Prepare scenes in advance.</b> Let the AI build and name your scenes while you are offline. While live, only switch between them.</li>
+    <li><b>Read stream and record requests twice.</b> <code>StartStream</code> and <code>StopStream</code> are the ones that matter most.</li>
+    <li><b>Use Pause in an emergency.</b> One click in Homebox stops all AI access, without touching OBS itself.</li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="writing-good-ai-tasks.html"><h3>How to write tasks AI can finish on its own</h3><p>Practical rules for writing AI tasks that run to completion with Homebox: describe outcomes, set constraints, ask for checks and break big jobs into stages.</p></a><a class="card" href="blender-with-ai.html"><h3>Model a scene in Blender with AI</h3><p>Connect Blender to Homebox and let an AI chat build a low-poly scene with bpy, one undoable step at a time, then refine it with feedback.</p></a><a class="card" href="approvals-or-full-access.html"><h3>Approvals or Full access: when to let AI work on its own</h3><p>How Homebox's approvals and Full access work, what each is good for, and a simple rule for deciding when to let an AI run without asking.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

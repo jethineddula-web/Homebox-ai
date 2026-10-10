@@ -1,0 +1,26 @@
+<!-- title: Troubleshooting -->
+<!-- description: Fixes for common Homebox problems: the app isn't running, the AI doesn't use Homebox, results don't send, Maya or other apps are not reachable. -->
+<div class="wrap narrow page-hd">
+  <h1>Troubleshooting</h1>
+  <p>Most problems have a quick fix. Find what you see below.</p>
+</div>
+<div class="wrap narrow article">
+  <div class="table-wrap"><table>
+    <tr><th>What you see</th><th>What to do</th></tr>
+    <tr><td>The extension says "Homebox app is not running"</td><td>Open Homebox from the Start menu or desktop shortcut. It keeps running in the tray when you close its window. The popup updates by itself within a second or two.</td></tr>
+    <tr><td>Homebox opens in the browser instead of its own window</td><td>Another copy of Homebox is already running (for example an older version). Quit it from its tray icon or Settings → Quit, then open Homebox again. Only one Homebox can run at a time.</td></tr>
+    <tr><td>The AI gives you a script instead of doing the work</td><td>Start a new chat and use the round Homebox button → Start task. If it still happens, reply: "Don't give me a script. Use homebox blocks, as in my first message."</td></tr>
+    <tr><td>The AI's actions aren't picked up</td><td>They must be in <code>```homebox</code> code blocks. Ask the AI to use them. You can also press Run next to a step in the Homebox panel.</td></tr>
+    <tr><td>The same action appears again and again</td><td>The results didn't reach the chat. Click <b>Put in chat box</b> in the Homebox panel and press Send.</td></tr>
+    <tr><td>Results are in the message box but not sent</td><td>Press Send yourself. Some chat sites change their buttons often.</td></tr>
+    <tr><td>Arena shows two answers side by side</td><td>That's Battle mode. Pick <b>Run (left)</b> or <b>Run (right)</b>, or use Direct Chat for full auto-run.</td></tr>
+    <tr><td>The AI says it doesn't have a tool (for example <code>maya_run_python</code>)</td><td>That app or permission is off. Turn it on in Homebox, then start a new chat.</td></tr>
+    <tr><td>An app says "not reachable"</td><td>Open the app with no dialog box waiting. For 3D apps, the Homebox bridge must be running inside the app: paste the setup line from Homebox → Apps, or turn on Start automatically and restart the app.</td></tr>
+    <tr><td>"Maya did not answer in time"</td><td>Close any open dialog in Maya. Check the Script Editor for "Homebox: Maya is listening on port 7017". If Maya was just restarted, run the setup line again or turn on automatic start.</td></tr>
+    <tr><td>After Effects doesn't answer</td><td>Turn on Edit → Preferences → Scripting &amp; Expressions → <b>Allow Scripts to Write Files and Access Network</b>.</td></tr>
+    <tr><td>OBS says the password is wrong</td><td>In OBS, open Tools → WebSocket Server Settings → Show Connect Info, and copy the password into Homebox → Apps → OBS Studio.</td></tr>
+    <tr><td>A chat site changed its design and something broke</td><td>Use the Copy and Put in chat box buttons, or paste mode on Connect AI, which works with any AI.</td></tr>
+    <tr><td>Buttons in the extension don't respond</td><td>After updating Homebox, reload the extension on <code>chrome://extensions</code> and refresh the chat page.</td></tr>
+  </table></div>
+  <p>Still stuck? <a href="contact.html">Contact us</a> and include what you tried and any error message. The Activity page and <code>.homebox\audit.jsonl</code> show exactly what happened.</p>
+</div>

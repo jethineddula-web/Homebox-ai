@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Undo, backups and Git: a safety net for AI-made changes · Homebox</title>
+<meta name="description" content="How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/undo-backups-git.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Undo, backups and Git: a safety net for AI-made changes · Homebox">
+<meta property="og:description" content="How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back.">
+<meta property="og:url" content="https://www.example.com/guides/undo-backups-git.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/activity.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Undo, backups and Git: a safety net for AI-made changes","description":"How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back.","image":"https://www.example.com/assets/screens/activity.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/undo-backups-git.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Undo, backups and Git: a safety net for AI-made changes","item":"https://www.example.com/guides/undo-backups-git.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Undo, backups and Git: a safety net for AI-made changes</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Undo, backups and Git: a safety net for AI-made changes</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>Letting AI change your files is much less stressful when you know you can always go back. Homebox has Undo built in, but it helps to understand exactly what it covers and when a second safety net, like Git or a plain backup, is worth adding.</p>
+
+  <figure><img src="../assets/screens/activity.png" alt="The Homebox Activity page listing AI actions by time, with Undo buttons next to file changes" width="1280" height="800" loading="lazy"><figcaption>The Activity page lists everything the AI did. File changes have an Undo button.</figcaption></figure>
+
+  <h2>How Homebox Undo works</h2>
+  <p>Before the AI changes a file, Homebox copies the current version into its own backup folder. Undo puts that copy back. It covers:</p>
+  <ul>
+    <li><b>Writing or editing a file</b>: Undo restores the previous content, or removes a newly created file.</li>
+    <li><b>Creating a folder</b>: Undo removes it again (if it's still empty).</li>
+    <li><b>Moving or renaming</b>: Undo moves it back.</li>
+    <li><b>Deleting</b>: Homebox backs up the whole file or folder first, and Undo restores it exactly.</li>
+  </ul>
+
+  <h2>What Undo doesn't cover</h2>
+  <ul>
+    <li><b>Commands.</b> A command can do anything, so Homebox can't back up its effects. Read commands carefully before approving.</li>
+    <li><b>App scripts.</b> Inside Maya, Blender, Houdini, 3ds Max, Nuke, Unreal, Word and AutoCAD, each AI step is one undo step in that app, so use the app's own <kbd>Ctrl</kbd>+<kbd>Z</kbd>. Excel and PowerPoint can't undo script changes at all.</li>
+    <li><b>Old sessions.</b> Activity from before Homebox last started is shown for reference, but can't be undone from the list.</li>
+  </ul>
+
+  <h2>Add Git for code projects</h2>
+  <p>If your sandbox is a code project, Git is the best second safety net. Commit before each AI session:</p>
+  <pre>git add -A
+git commit -m "Before AI session"</pre>
+  <p>After the session, <code>git diff</code> shows exactly what changed, line by line, and <code>git restore .</code> (or <code>git checkout -- .</code> in older Git) throws away everything the AI did. With VS Code connected, the Source Control view shows the same thing visually.</p>
+  <p>Homebox never lets the AI read <code>.git/config</code>, which can contain credentials, but the AI can still see your normal files.</p>
+
+  <h2>Backups for everything else</h2>
+  <p>For design files, documents and 3D scenes, a simple habit works: before a big session, copy the project folder (or let your cloud drive keep version history). For apps that can't undo scripts, like Excel and PowerPoint, save a copy first.</p>
+
+  <h2>A routine that works</h2>
+  <ol>
+    <li>Commit or copy your project.</li>
+    <li>Give the AI a clear, limited task. See <a href="writing-good-ai-tasks.html">How to write tasks AI can finish on its own</a>.</li>
+    <li>Review approvals, or watch the Activity page if Full access is on.</li>
+    <li>At the end, review the changes (Activity page or <code>git diff</code>) and keep or undo them.</li>
+  </ol>
+
+  <h2>Common questions</h2>
+  <h3>Where are Homebox's backups kept?</h3>
+  <p>In the <code>.homebox\snapshots</code> folder in your user folder, on your own computer. They're never uploaded anywhere.</p>
+  <h3>Can I undo something from yesterday?</h3>
+  <p>The Undo buttons cover changes made since Homebox last started. For anything older, use Git or your own backups. That's one more reason to commit before each session.</p>
+  <h3>Does Undo work if I edited the file afterwards?</h3>
+  <p>Undo puts back the version from before the AI's change, so any edits you made after that are replaced too. If you've edited a file since, copy your edits somewhere first.</p>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="choosing-an-ai-chat-site.html"><h3>Which AI chat site should you use with Homebox?</h3><p>How to choose between ChatGPT, Claude, Gemini, DeepSeek and other chat sites for working with Homebox, and a quick test to compare them yourself.</p></a><a class="card" href="excel-with-ai.html"><h3>Automate Excel with AI</h3><p>Let an AI clean data, add formulas and build a summary sheet in your open Excel workbook through Homebox, and keep your data safe while it works.</p></a><a class="card" href="maya-with-ai.html"><h3>Build and rig a character in Maya with AI</h3><p>Set up Autodesk Maya with Homebox once, then let an AI build a named, grouped cartoon character with a basic skeleton, one undoable step at a time.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

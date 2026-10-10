@@ -1,0 +1,55 @@
+<!-- title: Undo, backups and Git: a safety net for AI-made changes -->
+<!-- description: How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back. -->
+<!-- type: article -->
+<!-- published: 2026-10-01 -->
+<!-- category: Safety -->
+<!-- image: screens/activity.png -->
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Undo, backups and Git: a safety net for AI-made changes</h1>{{articleMeta}}</div>
+
+  <p>Letting AI change your files is much less stressful when you know you can always go back. Homebox has Undo built in, but it helps to understand exactly what it covers and when a second safety net, like Git or a plain backup, is worth adding.</p>
+
+  <figure><img src="../assets/screens/activity.png" alt="The Homebox Activity page listing AI actions by time, with Undo buttons next to file changes" width="1280" height="800" loading="lazy"><figcaption>The Activity page lists everything the AI did. File changes have an Undo button.</figcaption></figure>
+
+  <h2>How Homebox Undo works</h2>
+  <p>Before the AI changes a file, Homebox copies the current version into its own backup folder. Undo puts that copy back. It covers:</p>
+  <ul>
+    <li><b>Writing or editing a file</b>: Undo restores the previous content, or removes a newly created file.</li>
+    <li><b>Creating a folder</b>: Undo removes it again (if it's still empty).</li>
+    <li><b>Moving or renaming</b>: Undo moves it back.</li>
+    <li><b>Deleting</b>: Homebox backs up the whole file or folder first, and Undo restores it exactly.</li>
+  </ul>
+
+  <h2>What Undo doesn't cover</h2>
+  <ul>
+    <li><b>Commands.</b> A command can do anything, so Homebox can't back up its effects. Read commands carefully before approving.</li>
+    <li><b>App scripts.</b> Inside Maya, Blender, Houdini, 3ds Max, Nuke, Unreal, Word and AutoCAD, each AI step is one undo step in that app, so use the app's own <kbd>Ctrl</kbd>+<kbd>Z</kbd>. Excel and PowerPoint can't undo script changes at all.</li>
+    <li><b>Old sessions.</b> Activity from before Homebox last started is shown for reference, but can't be undone from the list.</li>
+  </ul>
+
+  <h2>Add Git for code projects</h2>
+  <p>If your sandbox is a code project, Git is the best second safety net. Commit before each AI session:</p>
+  <pre>git add -A
+git commit -m "Before AI session"</pre>
+  <p>After the session, <code>git diff</code> shows exactly what changed, line by line, and <code>git restore .</code> (or <code>git checkout -- .</code> in older Git) throws away everything the AI did. With VS Code connected, the Source Control view shows the same thing visually.</p>
+  <p>Homebox never lets the AI read <code>.git/config</code>, which can contain credentials, but the AI can still see your normal files.</p>
+
+  <h2>Backups for everything else</h2>
+  <p>For design files, documents and 3D scenes, a simple habit works: before a big session, copy the project folder (or let your cloud drive keep version history). For apps that can't undo scripts, like Excel and PowerPoint, save a copy first.</p>
+
+  <h2>A routine that works</h2>
+  <ol>
+    <li>Commit or copy your project.</li>
+    <li>Give the AI a clear, limited task. See <a href="writing-good-ai-tasks.html">How to write tasks AI can finish on its own</a>.</li>
+    <li>Review approvals, or watch the Activity page if Full access is on.</li>
+    <li>At the end, review the changes (Activity page or <code>git diff</code>) and keep or undo them.</li>
+  </ol>
+
+  <h2>Common questions</h2>
+  <h3>Where are Homebox's backups kept?</h3>
+  <p>In the <code>.homebox\snapshots</code> folder in your user folder, on your own computer. They're never uploaded anywhere.</p>
+  <h3>Can I undo something from yesterday?</h3>
+  <p>The Undo buttons cover changes made since Homebox last started. For anything older, use Git or your own backups. That's one more reason to commit before each session.</p>
+  <h3>Does Undo work if I edited the file afterwards?</h3>
+  <p>Undo puts back the version from before the AI's change, so any edits you made after that are replaced too. If you've edited a file since, copy your edits somewhere first.</p>
+</div>

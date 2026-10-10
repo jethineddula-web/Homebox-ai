@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build procedural setups in Houdini with AI · Homebox</title>
+<meta name="description" content="Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/houdini-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Build procedural setups in Houdini with AI · Homebox">
+<meta property="og:description" content="Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.">
+<meta property="og:url" content="https://www.example.com/guides/houdini-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Build procedural setups in Houdini with AI","description":"Use an AI chat with Homebox to build Houdini node networks with the hou module: scatter, copy to points and more, one undo group per step.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/houdini-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Build procedural setups in Houdini with AI","item":"https://www.example.com/guides/houdini-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Build procedural setups in Houdini with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Build procedural setups in Houdini with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>Houdini is built around node networks, and every node, parameter and connection can be created from Python through the <code>hou</code> module. That makes it a good match for AI: the AI writes the network, Houdini shows the result, and you steer it with plain language. This guide walks through connecting Houdini to Homebox and building a small procedural setup.</p>
+
+  <h2>Connect Houdini</h2>
+  <ol class="steps">
+    <li><b>Turn on Houdini in Homebox</b>Open <b>Apps → Houdini</b> and switch on <b>Let AI control Houdini</b>.</li>
+    <li><b>Start the bridge</b>In Houdini, open <b>Windows → Python Shell</b>, paste the setup line shown in Homebox and press Enter. The shell prints <i>Homebox: Houdini is listening on port 7011</i>.</li>
+    <li><b>Test</b>Click <b>Test connection</b> in Homebox. To skip the paste next time, turn on <b>Start automatically</b>, which adds a marked block to your <code>456.py</code> startup script.</li>
+  </ol>
+
+  <h2>A first task: scattered rocks</h2>
+  <p>Start a new chat, click the Homebox button and try:</p>
+  <pre>In Houdini, under /obj make a geo node called rocks_setup.
+Inside it: a grid 20 x 20, scatter 200 points on it, and copy a
+small sphere (radius 0.15) onto the points with random scale
+between 0.5 and 1.5. Name every node clearly, lay out the network,
+and set the display flag on the final node. Report the node paths.</pre>
+  <p>The AI builds this in a few steps. Each step's Python appears in Homebox for approval, so you can read exactly which nodes it creates. A typical step looks like:</p>
+  <pre>geo = hou.node('/obj').createNode('geo', 'rocks_setup')
+grid = geo.createNode('grid', 'ground')
+grid.parm('sizex').set(20)
+grid.parm('sizey').set(20)
+scatter = geo.createNode('scatter', 'rock_points')
+scatter.setInput(0, grid)
+geo.layoutChildren()
+print(scatter.path())</pre>
+
+  <h2>Why one step at a time works best</h2>
+  <p>Each approved step runs inside a single Houdini undo group, so <kbd>Ctrl</kbd>+<kbd>Z</kbd> in Houdini removes the whole step. Small steps mean small undos. They also let the AI read back results: after creating the scatter, it can print the point count and adjust before moving on.</p>
+
+  <h2>Giving feedback</h2>
+  <p>The AI can't see your viewport, but it can read numbers. Useful feedback is concrete:</p>
+  <ul>
+    <li>"The rocks are floating. Make sure the copies sit on the grid."</li>
+    <li>"Too uniform. Add a random rotation around Y."</li>
+    <li>"Print the bounding box of the final node so we can check its size."</li>
+  </ul>
+  <p>Ask it to expose important values as parameters on the geo node ("add a spare parameter for rock count"), and you can then tweak the setup yourself without the AI.</p>
+
+  <h2>Going further</h2>
+  <ul>
+    <li><b>Attribute wrangles:</b> the AI can write VEX into an Attribute Wrangle's snippet parameter, for example to colour points by height.</li>
+    <li><b>Simulations:</b> it can set up simple RBD or Vellum networks, but start with low resolution and ask for one stage at a time.</li>
+    <li><b>Saving:</b> ask it to save the hip file into the sandbox, for example <code>hou.hipFile.save(SANDBOX + '/rocks.hip')</code>.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Houdini is not listening"</b>: paste the setup line again, or turn on Start automatically and reopen a scene.</li>
+    <li><b>"no Qt found"</b>: the bridge needs Houdini's normal window. It doesn't run in <code>hython</code> or a terminal.</li>
+    <li><b>A node type isn't found</b>: node type names change between Houdini versions. Ask the AI to list available types with <code>hou.sopNodeTypeCategory().nodeTypes()</code> first.</li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="vscode-with-ai.html"><h3>Fix code errors in VS Code with AI</h3><p>Connect VS Code to Homebox so an AI can see your errors, fix code, add and delete files, and open what it changed, with every change undoable.</p></a><a class="card" href="after-effects-with-ai.html"><h3>Make motion graphics in After Effects with AI</h3><p>Set up After Effects scripting with Homebox, then have an AI chat build compositions, text animations and keyframes for you, one undo group per step.</p></a><a class="card" href="prompt-injection-explained.html"><h3>Prompt injection: what it is and how to stay safe</h3><p>A plain-language explanation of prompt injection, why it matters when AI can act on your computer, and the practical habits and Homebox settings that keep you safe.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

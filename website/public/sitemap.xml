@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.example.com/about.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/apps.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/changelog.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/contact.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/cookies.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/disclaimer.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/download.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/faq.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/features.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/glossary.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guide.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/after-effects-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/approvals-or-full-access.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/blender-with-ai.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/guides/choosing-an-ai-chat-site.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/excel-with-ai.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/guides/first-website-with-ai.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/guides/houdini-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/maya-with-ai.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/guides/obs-with-ai.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/guides/photoshop-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/powerpoint-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/prompt-injection-explained.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/undo-backups-git.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/unreal-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/vscode-with-ai.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/guides/writing-good-ai-tasks.html</loc><lastmod>2026-09-30</lastmod></url>
+  <url><loc>https://www.example.com/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/privacy.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/safety.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/terms.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://www.example.com/troubleshooting.html</loc><lastmod>2026-10-01</lastmod></url>
+</urlset>

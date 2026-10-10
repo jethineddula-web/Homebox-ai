@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turn notes into a PowerPoint deck with AI · Homebox</title>
+<meta name="description" content="Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.example.com/guides/powerpoint-with-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Homebox">
+<meta property="og:title" content="Turn notes into a PowerPoint deck with AI · Homebox">
+<meta property="og:description" content="Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable.">
+<meta property="og:url" content="https://www.example.com/guides/powerpoint-with-ai.html">
+<meta property="og:image" content="https://www.example.com/assets/screens/apps.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:modified_time" content="2026-10-01">
+<meta name="author" content="Jethin">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.example.com/#org","name":"Jethin Production","url":"https://www.example.com","logo":"https://www.example.com/assets/icon.png","email":"hello@example.com"},{"@type":"WebSite","@id":"https://www.example.com/#site","url":"https://www.example.com","name":"Homebox","publisher":{"@id":"https://www.example.com/#org"}},{"@type":"TechArticle","headline":"Turn notes into a PowerPoint deck with AI","description":"Put your notes in the Homebox sandbox and let an AI chat build a clean PowerPoint presentation in your open PowerPoint, slide by slide, with every step reviewable.","image":"https://www.example.com/assets/screens/apps.png","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Person","name":"Jethin","url":"https://www.example.com/about.html#author"},"publisher":{"@id":"https://www.example.com/#org"},"mainEntityOfPage":"https://www.example.com/guides/powerpoint-with-ai.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.example.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://www.example.com/guides/"},{"@type":"ListItem","position":3,"name":"Turn notes into a PowerPoint deck with AI","item":"https://www.example.com/guides/powerpoint-with-ai.html"}]}]}</script>
+<!-- AdSense: put your ca-pub-… id in site.config.json and run node build.js -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="32" height="32"><span>Homebox</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav" aria-label="Main"><a href="../features.html">Features</a><a href="../apps.html">Apps</a><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a class="btn primary small" href="../download.html">Download</a></nav>
+  </div>
+</header>
+<main id="main">
+<nav class="crumbs wrap narrow" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › <span>Turn notes into a PowerPoint deck with AI</span></nav>
+<div class="wrap narrow article">
+  <div class="page-hd"><h1>Turn notes into a PowerPoint deck with AI</h1><p class="meta">By <a href="../about.html#author">Jethin</a> · 1 October 2026 · 2 min read</p></div>
+
+  <p>Turning rough notes into slides is mostly typing and formatting. With Homebox, an AI can read your notes from the sandbox folder and build the deck directly in PowerPoint, while you watch the slides appear and approve each step.</p>
+
+  <div class="callout warn"><p><b>Save first.</b> PowerPoint can't undo changes made by scripts. Start from a new presentation or save a copy before you begin.</p></div>
+
+  <h2>Set up</h2>
+  <ol class="steps">
+    <li><b>Put your notes in the sandbox</b>Save them as a text or Markdown file, for example <code>notes/q3-plan.md</code>. Plain text works best.</li>
+    <li><b>Open PowerPoint</b>Start a blank presentation, or open the template you want to use.</li>
+    <li><b>Turn on PowerPoint in Homebox</b>Go to <b>Apps → PowerPoint</b>, switch on <b>Let AI control PowerPoint</b> and click <b>Test connection</b>.</li>
+  </ol>
+
+  <h2>Ask for the deck</h2>
+  <pre>Read notes/q3-plan.md. In PowerPoint, build a 6-slide deck from it:
+a title slide, an agenda, three content slides with at most five
+short bullet points each, and a "Next steps" slide. Use the open
+presentation's layouts. Keep the wording short and clear. Build one
+slide per step and tell me the slide titles as you go.</pre>
+  <p>The AI first reads your notes with <code>read_file</code>, then adds slides with short PowerShell steps that use PowerPoint's automation interface. A step might add a slide with the Title and Content layout, set the title and fill in the bullets. You see each script before it runs.</p>
+
+  <h2>Polish with follow-ups</h2>
+  <ul>
+    <li>"Slide 3 has too much text. Split it into two slides."</li>
+    <li>"Add speaker notes to every slide with what I should say."</li>
+    <li>"Make all titles the same size and left-aligned."</li>
+    <li>"Save the presentation into the sandbox as q3-plan.pptx."</li>
+  </ul>
+
+  <h2>Why one slide per step?</h2>
+  <p>Because script changes can't be undone in PowerPoint, small steps keep mistakes small. If a slide comes out wrong, delete it yourself and ask the AI to redo just that one.</p>
+
+  <h2>The same idea in Word and Excel</h2>
+  <ul>
+    <li><b>Word</b>: "Turn notes/meeting.md into a formatted one-page summary with headings." In Word, each AI step is a single Undo.</li>
+    <li><b>Excel</b>: "Make a table from data/sales.csv and add totals and a chart." See <a href="excel-with-ai.html">Automate Excel with AI</a>.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li><b>"Could not reach PowerPoint"</b>: close any open dialog in PowerPoint and try again.</li>
+    <li><b>Wrong layout used</b>: ask the AI to list the layouts in the open presentation first, then name the one you want.</li>
+  </ul>
+
+  <h2>More prompts to try</h2>
+  <ul>
+    <li><i>"Add a timeline slide with four milestones from my notes, as a row of labelled boxes."</i></li>
+    <li><i>"Make every slide title start with a verb and stay under eight words."</i></li>
+    <li><i>"Add a final 'Questions?' slide with my contact details from notes/contact.md."</i></li>
+    <li><i>"Check every slide for more than five bullets and tell me which ones to shorten."</i></li>
+  </ul>
+
+  <h2>Tips for slides that work</h2>
+  <ul>
+    <li><b>One idea per slide.</b> Ask the AI to split any slide that tries to say two things.</li>
+    <li><b>Short bullets.</b> Five words or fewer per bullet reads well from the back of a room. Put the detail in the speaker notes.</li>
+    <li><b>Consistent layouts.</b> Ask the AI to use the same layout for every content slide, so the deck looks designed rather than assembled.</li>
+    <li><b>Check numbers yourself.</b> If the AI copies figures from your notes, compare them before you present. It may round or reorder them.</li>
+  </ul>
+</div>
+
+<div class="wrap narrow"><aside class="related"><h2>Related guides</h2><div class="grid3"><a class="card" href="undo-backups-git.html"><h3>Undo, backups and Git: a safety net for AI-made changes</h3><p>How Homebox's Undo works, what it does and doesn't cover, and how to add Git and simple backups so AI-made changes are always easy to review and roll back.</p></a><a class="card" href="choosing-an-ai-chat-site.html"><h3>Which AI chat site should you use with Homebox?</h3><p>How to choose between ChatGPT, Claude, Gemini, DeepSeek and other chat sites for working with Homebox, and a quick test to compare them yourself.</p></a><a class="card" href="excel-with-ai.html"><h3>Automate Excel with AI</h3><p>Let an AI clean data, add formulas and build a summary sheet in your open Excel workbook through Homebox, and keep your data safe while it works.</p></a></div></aside></div>
+</main>
+<footer class="site-ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand"><a class="logo" href="../index.html"><img src="../assets/icon.png" alt="" width="28" height="28"><span>Homebox</span></a>
+      <p>Let AI from any chat website work in one folder on your computer and in your creative apps. You stay in control of every step.</p></div>
+    <div><h4>Product</h4><a href="../download.html">Download</a><a href="../features.html">Features</a><a href="../apps.html">Supported apps</a><a href="../safety.html">Safety</a><a href="../changelog.html">What's new</a></div>
+    <div><h4>Learn</h4><a href="../guide.html">How to use</a><a href="../guides/index.html">Guides</a><a href="../faq.html">FAQ</a><a href="../troubleshooting.html">Troubleshooting</a><a href="../glossary.html">Glossary</a></div>
+    <div><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><a href="../disclaimer.html">Disclaimer</a><a href="../cookies.html">Cookie policy</a></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© 2026 Jethin Production. All rights reserved.</span><span>Homebox is not affiliated with OpenAI, Anthropic, Google, Autodesk, Adobe, Microsoft or any other company named on this site.</span></div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

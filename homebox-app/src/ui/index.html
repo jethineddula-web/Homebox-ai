@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homebox</title>
+<link rel="icon" href="/icon.png">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body class="booting">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.01"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+  <symbol id="i-open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l5 5v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-term" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v9M6.3 7a8 8 0 1 0 11.4 0"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+</svg>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="brand">
+      <img src="/icon.png" alt="">
+      <div class="brand-text"><b>Homebox</b><span id="ver"></span></div>
+    </div>
+    <nav id="nav" aria-label="Main">
+      <span class="nav-ind" id="navInd"></span>
+      <div class="nav-group">Workspace</div>
+      <a href="#home" data-page="home" data-tip="Overview of everything · Ctrl+1"><svg><use href="#i-home"/></svg><span>Home</span></a>
+      <a href="#approvals" data-page="approvals" data-tip="Actions waiting for your OK · Ctrl+2"><svg><use href="#i-shield"/></svg><span>Approvals</span><em class="badge hidden" id="navBadge"></em></a>
+      <a href="#activity" data-page="activity" data-tip="Everything AI did, with Undo · Ctrl+3"><svg><use href="#i-pulse"/></svg><span>Activity</span></a>
+      <a href="#folders" data-page="folders" data-tip="Folders AI may work in · Ctrl+4"><svg><use href="#i-folder"/></svg><span>AI folder</span></a>
+      <div class="nav-group">Connections</div>
+      <a href="#connect" data-page="connect" data-tip="Connect ChatGPT, Arena, Claude and others · Ctrl+5"><svg><use href="#i-link"/></svg><span>Connect AI</span><em class="badge hidden" id="pairBadge"></em></a>
+      <a href="#apps" data-page="apps" data-tip="Blender, Photoshop, Excel, OBS and more · Ctrl+6"><svg><use href="#i-grid"/></svg><span>Apps</span><em class="count hidden" id="appsCount"></em></a>
+      <a href="#maya" class="adv" data-page="maya" data-tip="Let AI build in Autodesk Maya · Ctrl+7"><svg><use href="#i-cube"/></svg><span>Maya</span><i class="dot" id="mayaDot"></i></a>
+      <div class="nav-group">App</div>
+      <a href="#settings" data-page="settings" data-tip="Permissions, look and feel · Ctrl+8"><svg><use href="#i-gear"/></svg><span>Settings</span></a>
+      <a href="#help" data-page="help" data-tip="Guides and troubleshooting · F1"><svg><use href="#i-help"/></svg><span>Help</span></a>
+    </nav>
+    <div class="side-foot">
+      <label class="full-row" data-tip="When on, AI runs everything you turned on without asking you first."><svg><use href="#i-bolt"/></svg><span>Full access</span><span class="switch"><input type="checkbox" id="fullSide"><span></span></span></label>
+      <button class="pause" id="pauseBtn" data-tip="Instantly cuts off all AI access. Click again to allow it."><i></i><span id="pauseText">AI access on</span></button>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main id="main">
+    <div class="topbar">
+      <button class="icon-btn only-mobile" id="menuBtn" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+      <div class="crumbs"><span class="muted">Homebox</span><svg class="sep"><use href="#i-chev"/></svg><b id="crumb">Home</b></div>
+      <button class="search-btn" id="paletteBtn" aria-label="Search and commands"><svg><use href="#i-search"/></svg><span>Search or jump to…</span><kbd>Ctrl K</kbd></button>
+      <button class="icon-btn" id="tourBtn" aria-label="Show me around" data-tip="Show me around"><svg><use href="#i-map"/></svg></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch theme" data-tip="Switch light / dark"><svg><use href="#i-moon"/></svg></button>
+    </div>
+
+    <div class="banner hidden" id="pausedBanner"><svg><use href="#i-pause"/></svg><span>AI access is paused. Nothing can read or change your files until you resume.</span><button class="btn small" id="resumeBtn">Resume</button></div>
+    <div class="banner full hidden" id="fullBanner"><svg><use href="#i-bolt"/></svg><span><b>Full access is on.</b> AI runs actions without asking you first.</span><button class="btn small" id="fullOffBtn">Turn off</button></div>
+    <div class="banner warn hidden" id="offlineBanner"><span class="spinner"></span><span>Lost contact with Homebox. Reconnecting…</span></div>
+    <div id="pairBar"></div>
+
+    <div class="pages">
+      <!-- HOME -->
+      <section class="page" data-page="home">
+        <header class="hero">
+          <div>
+            <h1 id="greeting">Welcome</h1>
+            <p>Let AI from any chat website work in one folder on your computer and in your apps. You decide what it may do.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn" data-go="connect"><svg><use href="#i-link"/></svg>Connect an AI</button>
+            <button class="btn primary" id="openWsBtn"><svg><use href="#i-open"/></svg>Open AI folder</button>
+          </div>
+        </header>
+        <div class="next-step" id="nextStep"></div>
+        <div class="card how">
+          <div class="row between"><h2>How Homebox works</h2><button class="btn ghost small" id="openWizard">Setup guide<svg><use href="#i-arrow"/></svg></button></div>
+          <ol class="how-steps">
+            <li><span class="how-ic"><svg><use href="#i-folder"/></svg></span><b>1. Pick a folder</b><span>The AI can only see and change files inside your <b>AI folder</b>.</span></li>
+            <li><span class="how-ic"><svg><use href="#i-link"/></svg></span><b>2. Ask on an AI chat site</b><span>Open ChatGPT, Claude or Gemini, click the round <b>Homebox</b> button at the bottom right, and type your task there.</span></li>
+            <li><span class="how-ic"><svg><use href="#i-check"/></svg></span><b>3. Approve the changes</b><span>Homebox shows each change first. Click <b>Approve</b>, then see the result in your folder.</span></li>
+          </ol>
+        </div>
+        <div class="grid4">
+          <button class="stat" data-go="folders"><span class="stat-ic"><svg><use href="#i-folder"/></svg></span><span class="k">AI folder</span><b id="hFolder">—</b><small id="hFolderPath" class="muted ellipsis"></small></button>
+          <button class="stat" data-go="connect"><span class="stat-ic"><svg><use href="#i-link"/></svg></span><span class="k">Browsers</span><b class="num" id="hBrowsers">0</b><small class="muted">connected</small></button>
+          <button class="stat" data-go="apps"><span class="stat-ic"><svg><use href="#i-grid"/></svg></span><span class="k">Apps</span><b id="hApps">0 on</b><small class="muted ellipsis" id="hAppsSub"></small></button>
+          <button class="stat" data-go="approvals"><span class="stat-ic"><svg><use href="#i-shield"/></svg></span><span class="k">Waiting for you</span><b class="num" id="hPending">0</b><small class="muted">approvals</small></button>
+        </div>
+
+        <div class="cols">
+          <div class="card">
+            <div class="row between"><h2>Get started</h2><span class="progress-label muted" id="checkLabel"></span></div>
+            <div class="progress"><i id="checkBar"></i></div>
+            <ol class="steps" id="checklist"></ol>
+          </div>
+          <div class="card">
+            <div class="row between"><h2>Today</h2><button class="btn ghost small" data-go="activity">See all<svg><use href="#i-arrow"/></svg></button></div>
+            <div class="mini-stats" id="todayStats"></div>
+            <div id="hLog" class="log compact"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPROVALS -->
+      <section class="page" data-page="approvals">
+        <header><h1>Approvals</h1><p>AI is asking to do these things. Read what it wants, then approve or deny. <kbd>Enter</kbd> approves and <kbd>Esc</kbd> denies the top one.</p></header>
+        <div id="approvals" class="stack"></div>
+      </section>
+
+      <!-- ACTIVITY -->
+      <section class="page" data-page="activity">
+        <header><h1>Activity</h1><p>Everything AI did in your folders and in Maya. File changes can be undone.</p></header>
+        <div class="toolbar">
+          <div class="chips" id="actFilter">
+            <button class="chip on" data-f="all">All</button>
+            <button class="chip" data-f="changes">Changes</button>
+            <button class="chip" data-f="denied">Denied</button>
+            <button class="chip" data-f="error">Errors</button>
+            <button class="chip" data-f="you">By you</button>
+          </div>
+          <label class="field-search"><svg><use href="#i-search"/></svg><input id="actSearch" type="search" placeholder="Filter activity…"></label>
+        </div>
+        <div class="card flush"><div id="log" class="log"></div></div>
+      </section>
+
+      <!-- FOLDERS -->
+      <section class="page" data-page="folders">
+        <header><h1>AI folder</h1><p>The AI can only see and change files in the <b>active</b> folder (also called the sandbox). Use a project folder, never your whole user folder.</p></header>
+        <div id="folderList" class="stack"></div>
+        <div class="card">
+          <h2>Add pictures or files</h2>
+          <p class="muted small">Put files into the active AI folder so the AI can use them, for example photos for a website or a reference picture for a 3D model. Pictures go into <code>pictures</code>, other files into <code>files</code>. You can also add pictures from the Homebox panel on the chat page.</p>
+          <div class="dropzone mt" id="dropzone"><svg><use href="#i-download"/></svg><b>Drag pictures or files here</b><span class="muted small">or</span><button class="btn small" id="filePick">Choose files…</button><input type="file" id="fileInput" multiple hidden></div>
+          <div id="uploaded" class="stack tight mt"></div>
+        </div>
+        <div class="card">
+          <h2>Use a different folder</h2>
+          <div class="row wrap">
+            <button class="btn primary" id="pickBtn"><svg><use href="#i-folder"/></svg>Choose folder…</button>
+            <span class="muted small">or type a path:</span>
+          </div>
+          <form class="row wrap mt" id="addForm">
+            <input class="input grow" id="addPath" placeholder="C:\Users\you\Projects\my-site" autocomplete="off" spellcheck="false">
+            <label class="check"><input type="checkbox" id="addCreate"> Create if missing</label>
+            <button class="btn" type="submit"><svg><use href="#i-plus"/></svg>Add</button>
+          </form>
+          <div class="suggest" id="suggest"></div>
+        </div>
+      </section>
+
+      <!-- CONNECT -->
+      <section class="page" data-page="connect">
+        <header><h1>Connect an AI</h1><p>Pick the way that fits your AI. The browser extension is the easiest.</p></header>
+        <div class="tabs" id="connectTabs" role="tablist">
+          <button data-tab="ext" class="on" role="tab">Browser extension</button>
+          <button data-tab="mcp" role="tab" class="adv">MCP apps</button>
+          <button data-tab="paste" role="tab" class="adv">Paste a reply</button>
+          <span class="tab-ind"></span>
+        </div>
+
+        <div class="tabpane" data-tab="ext">
+          <div class="cols">
+            <div class="card">
+              <h2>Install once</h2>
+              <ol class="howto">
+                <li><button class="linkish" id="dlExt">Download the extension</button> and unzip it (or use the <b>homebox-extension</b> folder that came with Homebox).</li>
+                <li>Open <code>chrome://extensions</code> (Edge: <code>edge://extensions</code>) and turn on <b>Developer mode</b>.</li>
+                <li>Click <b>Load unpacked</b> and choose the <b>homebox-extension</b> folder.</li>
+                <li>Click the Homebox icon in the toolbar, then <b>Connect</b>. Approve the code that appears here.</li>
+              </ol>
+              <div class="row wrap mt">
+                <a class="btn primary" href="/download/homebox-extension.zip" download><svg><use href="#i-download"/></svg>Download extension</a>
+                <button class="btn" data-copy="chrome://extensions"><svg><use href="#i-copy"/></svg>Copy chrome://extensions</button>
+              </div>
+            </div>
+            <div class="card">
+              <h2>Connected browsers</h2>
+              <div id="devices" class="stack tight"></div>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Then, on any AI chat site</h2>
+            <div class="sites" id="sites"></div>
+            <p class="muted small mt">Open a <b>new chat</b>, click the round <b>Homebox</b> button at the bottom right, type your task and click <b>Start task</b>. Using another site? Open it and click <b>Enable</b> in the extension popup.</p>
+            <p class="note small mt"><b>Check the site's rules first.</b> Each AI site has its own terms, and some don't allow their website to be used through tools like this extension. Only use Homebox on sites whose terms allow it. AI apps with MCP support, such as Claude Desktop, are an officially supported way to connect (turn on <b>Show advanced options</b> in Settings to see <b>MCP apps</b>).</p>
+          </div>
+        </div>
+
+        <div class="tabpane hidden" data-tab="mcp">
+          <div class="card">
+            <h2>For apps that support MCP</h2>
+            <p class="muted">Claude Desktop, Cursor, VS Code, LM Studio and other MCP clients can use Homebox tools directly. Add this server URL to the app:</p>
+            <div class="codeline"><code id="mcpUrl"></code><button class="btn small" data-copy-from="mcpUrl"><svg><use href="#i-copy"/></svg>Copy</button></div>
+            <p class="muted small">The URL contains a secret. If it leaks, make a new one: old links stop working at once.</p>
+            <button class="btn danger-ghost small" id="rotateBtn">Make a new secret link</button>
+          </div>
+        </div>
+
+        <div class="tabpane hidden" data-tab="paste">
+          <div class="card">
+            <h2>Works with any AI, no extension</h2>
+            <ol class="howto">
+              <li><button class="linkish" id="copyPrompt">Copy the starter prompt</button> and paste it into any AI chat, followed by your task.</li>
+              <li>Copy the AI's whole reply and paste it below. Homebox runs its <code>homebox</code> blocks.</li>
+              <li>Copy the results back into the chat. Repeat until the AI says <b>DONE</b>.</li>
+            </ol>
+            <textarea class="input code-area" id="pasteIn" placeholder="Paste the AI's reply here…"></textarea>
+            <div class="row mt"><button class="btn primary" id="pasteRun"><svg><use href="#i-play"/></svg>Run blocks</button><span class="muted small" id="pasteInfo"></span></div>
+            <div id="pasteOutWrap" class="hidden mt">
+              <div class="row between"><h3>Results — send these back to the AI</h3><button class="btn small" data-copy-from="pasteOut"><svg><use href="#i-copy"/></svg>Copy</button></div>
+              <textarea class="input code-area" id="pasteOut" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPS -->
+      <section class="page" data-page="apps">
+        <header><h1>Apps</h1><p>Let AI work live in the programs you already use. Each app is off until you turn it on, and every step waits for your approval.</p></header>
+        <div class="toolbar">
+          <div class="chips" id="appFilter"></div>
+          <label class="field-search"><svg><use href="#i-search"/></svg><input id="appSearch" type="search" placeholder="Find an app…"></label>
+        </div>
+        <div class="app-grid" id="appGrid"></div>
+      </section>
+
+      <!-- MAYA -->
+      <section class="page" data-page="maya">
+        <header><h1>Maya</h1><p>Let AI build live in Autodesk Maya. Every Python step waits for your approval and is one undo step in Maya.</p></header>
+        <div class="cols">
+          <div class="card">
+            <h2>Status</h2>
+            <div class="status-row"><span class="dot big" id="mDot"></span><div><b id="mStatus">Not tested</b><div class="muted small" id="mStatusSub">Click Test to check that Maya answers.</div></div></div>
+            <div class="row wrap mt"><button class="btn primary" id="mayaTest"><svg><use href="#i-pulse"/></svg>Test connection</button><button class="btn" data-go="settings">Permissions</button></div>
+            <div class="setting mt">
+              <div><b>Let AI control Maya</b><div class="muted small">Every step still asks you first.</div></div>
+              <label class="switch"><input type="checkbox" id="mayaCap"><span></span></label>
+            </div>
+            <div class="setting">
+              <div><b>Start with Maya automatically</b><div class="muted small ellipsis" id="mUserSetup"></div></div>
+              <label class="switch"><input type="checkbox" id="mayaAuto"><span></span></label>
+            </div>
+            <p class="muted small mt">Homebox connects through its own secure bridge on port 7017. It only answers this computer, and only with Homebox's secret key.</p>
+          </div>
+          <div class="card">
+            <h2>Set up Maya step by step</h2>
+            <div id="mayaGuide"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page" data-page="settings">
+        <header><h1>Settings</h1><p>Choose what AI may do on its own, what needs your OK, and what is off.</p></header>
+        <div class="card full-card">
+          <div class="setting">
+            <div><b>Full access</b><div class="muted small">AI runs everything you turned on below without asking you first: file changes, commands, Maya and other apps. Things set to <b>Off</b> stay off. Typing, clicking and emails in your browser still ask you every time. Pause still stops everything.</div></div>
+            <label class="switch"><input type="checkbox" id="fullSettings"><span></span></label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Permissions</h2>
+          <div id="policy" class="stack tight"></div>
+          <form class="setting adv" id="stepsForm">
+            <div><b>Round limit</b><div class="muted small">When the AI works by itself, Homebox stops after this many rounds so it can't run forever.</div></div>
+            <div class="row"><input class="input narrow" id="maxSteps" inputmode="numeric"><button class="btn small" type="submit">Save</button></div>
+          </form>
+        </div>
+        <div class="card">
+          <h2>Look and feel</h2>
+          <div class="setting">
+            <div><b>Show advanced options</b><div class="muted small">For experienced users: the Maya page in the menu, MCP links, paste mode, running commands and the step limit. Off keeps Homebox simple.</div></div>
+            <label class="switch"><input type="checkbox" id="advanced"><span></span></label>
+          </div>
+          <div class="setting">
+            <div><b>Theme</b></div>
+            <div class="seg" id="themeSeg"><button data-v="system">System</button><button data-v="light">Light</button><button data-v="dark">Dark</button></div>
+          </div>
+          <div class="setting">
+            <div><b>Reduce motion</b><div class="muted small">Turn off animations.</div></div>
+            <label class="switch"><input type="checkbox" id="reduceMotion"><span></span></label>
+          </div>
+          <div class="setting">
+            <div><b>Notifications</b><div class="muted small">Alert me when AI needs an approval and this window is in the background.</div></div>
+            <label class="switch"><input type="checkbox" id="notifications"><span></span></label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>App</h2>
+          <div class="setting">
+            <div><b>Quit Homebox</b><div class="muted small">Stops the app. AI loses all access until you start it again.</div></div>
+            <button class="btn danger" id="quitBtn"><svg><use href="#i-power"/></svg>Quit</button>
+          </div>
+          <p class="muted small" id="aboutLine"></p>
+        </div>
+      </section>
+
+      <!-- HELP -->
+      <section class="page" data-page="help">
+        <header><h1>Help</h1><p>Quick answers. Press <kbd>Ctrl</kbd> + <kbd>K</kbd> anywhere to jump around.</p></header>
+        <label class="field-search wide"><svg><use href="#i-search"/></svg><input id="helpSearch" type="search" placeholder="Search help…"></label>
+        <div class="card">
+          <div class="row between"><h2>New to Homebox?</h2><button class="btn primary small" id="helpWizard">Open the setup guide</button></div>
+          <p class="muted">The setup guide walks you through the three things you need, and ticks them off as you go. The map button at the top shows you around this window.</p>
+        </div>
+        <div class="card">
+          <h2>What does each part do?</h2>
+          <dl class="parts" id="parts"></dl>
+        </div>
+        <h2 class="faq-title">Questions and answers</h2>
+        <div id="faq" class="faq"></div>
+        <div class="card">
+          <h2>Keyboard shortcuts</h2>
+          <div class="keys" id="keys"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- app details -->
+<div class="drawer hidden" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="drawer-scrim" id="drawerScrim"></div>
+  <aside class="drawer-box">
+    <div class="drawer-hd">
+      <span class="app-ic big" id="dIcon"></span>
+      <div class="grow0"><h2 id="dTitle"></h2><span class="muted small" id="dSub"></span></div>
+      <button class="icon-btn" id="dClose" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="drawer-bd" id="dBody"></div>
+  </aside>
+</div>
+
+<!-- confirm dialog -->
+<div class="modal hidden" id="modal" role="alertdialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <h2 id="mTitle"></h2>
+    <div class="muted" id="mText"></div>
+    <div class="row mt modal-acts"><button class="btn" id="mCancel">Cancel</button><button class="btn primary" id="mOk">OK</button></div>
+  </div>
+</div>
+
+<!-- setup guide -->
+<div class="wizard hidden" id="wizard" role="dialog" aria-modal="true" aria-labelledby="wzTitle">
+  <div class="wizard-box">
+    <div class="wz-top"><div class="wz-dots" id="wzDots"></div><button class="icon-btn" id="wzClose" aria-label="Close the setup guide"><svg><use href="#i-x"/></svg></button></div>
+    <div id="wzBody"></div>
+    <div class="row wz-foot"><button class="btn ghost" id="wzBack">Back</button><span class="grow0"></span><button class="btn primary" id="wzNext">Next</button></div>
+  </div>
+</div>
+
+<!-- guided tour -->
+<div class="tour hidden" id="tour">
+  <div class="tour-spot" id="tourSpot"></div>
+  <div class="tour-card" id="tourCard" role="dialog" aria-live="polite">
+    <div class="tour-step muted small" id="tourStep"></div>
+    <h3 id="tourTitle"></h3>
+    <p id="tourText"></p>
+    <div class="row mt"><button class="btn ghost small" id="tourSkip">Skip tour</button><span class="grow0"></span><button class="btn small" id="tourBack">Back</button><button class="btn primary small" id="tourNext">Next</button></div>
+  </div>
+</div>
+
+<!-- command palette -->
+<div class="palette hidden" id="palette" role="dialog" aria-modal="true" aria-label="Search and commands">
+  <div class="palette-box">
+    <label class="palette-input"><svg><use href="#i-search"/></svg><input id="palInput" placeholder="Type a page or command…" autocomplete="off"><kbd>Esc</kbd></label>
+    <div class="palette-list" id="palList"></div>
+    <div class="palette-foot muted"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div class="tip" id="tip"></div>
+
+<script src="/guides.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
